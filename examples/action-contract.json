@@ -1,34 +1,86 @@
 {
   "kind": "illustrative-design-contract",
-  "version": "1.0",
+  "version": "1.1",
   "action": "submit_mailing_address_maintenance",
   "synthetic": true,
   "autonomy": "human_approval_required",
   "scope": {
-    "permitted_fields": ["mailing_address"],
-    "excluded_actions": ["trade", "money_movement", "beneficiary_change", "investment_recommendation"],
+    "permitted_fields": [
+      "mailing_address"
+    ],
+    "excluded_actions": [
+      "trade",
+      "money_movement",
+      "beneficiary_change",
+      "investment_recommendation"
+    ],
     "eligibility": "Existing identity, fraud, jurisdiction and business rules must pass"
   },
   "authorization": {
-    "intersection": ["current_user_entitlements", "registered_agent_capabilities", "active_workflow_policy", "approved_proposal"],
+    "intersection": [
+      "current_user_entitlements",
+      "registered_agent_capabilities",
+      "current_authority_grant",
+      "active_workflow_policy",
+      "approved_proposal"
+    ],
     "recheck_at_execution": true,
-    "on_unavailable_policy": "stop_new_writes"
+    "grant_validation": [
+      "action_and_actor_delegation",
+      "scope_and_eligible_cohort",
+      "environment_and_allowed_mode",
+      "limits_expiry_and_revocation",
+      "validated_system_configuration_versions"
+    ],
+    "on_unavailable_policy": "stop_new_writes",
+    "semantic_judge": "assessment_only_never_grants_authority"
   },
   "proposal": {
-    "required_bindings": ["proposal_id", "account_reference", "exact_field_changes", "evidence_references", "relevant_record_version", "policy_version", "expires_at"],
+    "required_bindings": [
+      "proposal_id",
+      "account_reference",
+      "exact_field_changes",
+      "evidence_references",
+      "relevant_record_version",
+      "policy_version",
+      "expires_at",
+      "authority_grant_revision",
+      "approving_actor_and_delegation"
+    ],
     "material_change": "invalidate_and_request_new_approval"
   },
   "execution": {
-    "requires": ["durable_state", "conditional_write", "payload_bound_idempotency_key", "operation_lookup"],
+    "requires": [
+      "durable_state",
+      "conditional_write",
+      "payload_bound_idempotency_key",
+      "operation_lookup"
+    ],
     "unsupported_destination": "draft_only_until_alternative_controls_are_accepted",
     "timeout": "mark_unknown_and_reconcile_before_retry",
     "success": "authoritative_state_verified_against_approved_proposal"
   },
   "exception_owner": "designated_account_operations_queue",
   "evidence": {
-    "required": ["actor_and_delegation", "proposal_id", "policy_decision", "approval_reference", "tool_version", "operation_id", "receipt_reference", "verified_outcome"],
+    "required": [
+      "actor_and_delegation",
+      "proposal_id",
+      "policy_decision",
+      "approval_reference",
+      "tool_version",
+      "operation_id",
+      "outcome_status",
+      "authority_grant_revision",
+      "outcome_status_history"
+    ],
+    "conditional": {
+      "receipt_reference": "Record when available; absence during a timeout does not imply rejection",
+      "verified_outcome": "Required before claiming successful completion; bind to authoritative verification evidence",
+      "exception_owner": "Required while outcome is unknown, partial or otherwise unresolved"
+    },
     "sensitive_payload_location": "access_controlled_evidence_store",
     "general_logs": "correlation_ids_and_redacted_metadata_only",
     "retention": "approved_record_class_schedule_with_legal_hold_support"
-  }
+  },
+  "case_reference": "SC-42"
 }
