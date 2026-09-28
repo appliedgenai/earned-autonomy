@@ -46,6 +46,7 @@ State the thesis immediately. Establish why a task warrants an agent before expl
 - Keep the README compact; place detailed metrics, rubrics and operational cases in the full paper or reference material.
 - Keep all six core runtime-authority diagrams directly visible on the homepage: permission modes, shared harness, execution boundary, operating console, decision record and evaluation feedback loop. Do not reduce the homepage to a teaser that requires another document to understand the architecture.
 - Maintain a guided six-minute scan with short takeaways and captions, clickable full-resolution images and an explicit transition from the console's unknown OP-42 outcome to the later verified decision record. Inspect the assembled GitHub page after publication.
+- Review the homepage as a first-time reader: define earned autonomy and state the main decisions before introducing the architecture. Define harness, grant and approval in plain language. The prose must explain why there are two example actions and narrate verification, approval, uncertain execution and recovery without relying on diagram labels or a companion document to supply missing events.
 
 ## Measurements
 
