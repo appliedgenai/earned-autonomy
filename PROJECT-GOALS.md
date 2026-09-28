@@ -23,7 +23,7 @@ Published and verified in [1feb658](https://github.com/appliedgenai/earned-auton
 
 ## Previous homepage layout revision
 
-Published in [d6954c2](https://github.com/appliedgenai/earned-autonomy/commit/d6954c2bd90cf7f0d1c13cb544a4a5bc44526914) at the same repository-root URL already shared with Billy. The homepage is now a complete guided scan with all six runtime-authority diagrams embedded directly: modes, harness, execution, console, decision record and evaluation loop. Takeaways and captions connect the same SC-42 case across figures. OP-42 is explicitly unknown in the console and verified later in the evidence record.
+Published in [d6954c2](https://github.com/appliedgenai/earned-autonomy/commit/d6954c2bd90cf7f0d1c13cb544a4a5bc44526914) at the repository-root URL. The homepage is now a complete guided scan with all six runtime-authority diagrams embedded directly: modes, harness, execution, console, decision record and evaluation loop. Takeaways and captions connect the same SC-42 case across figures. OP-42 is explicitly unknown in the console and verified later in the evidence record.
 
 - Added the author statement: **The future of AI depends on disciplined engineering.**
 - Shortened surrounding prose and supplied six jump links, full-resolution image links and backward-compatible anchors for the previous five sections.

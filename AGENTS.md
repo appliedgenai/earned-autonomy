@@ -17,6 +17,7 @@ State the thesis immediately. Establish why a task warrants an agent before expl
 
 ## Research and integrity
 
+- Keep public repository files focused on the architecture. Do not include private outreach recipients, sharing status, job-search correspondence or assumptions about who has received a link.
 - Check current primary sources for material product, evaluation and regulatory claims. Attribute articles to their authors, including guest authors on Martin Fowler's site.
 - Distinguish verified product capabilities, author experience, design recommendations and synthetic examples. Never invent deployments, incidents, savings or benchmark results.
 - Keep regulatory statements within their source's scope. Do not label a design compliant or present an engineering proposal as a prescribed regulatory architecture.
