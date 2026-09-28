@@ -1,10 +1,12 @@
 # Agents you can audit
 
-### Autonomy is earned in the exception path.
+### Bounded authority for agents in regulated business workflows
 
 *Mohit Mittal · September 2026*
 
 **Short on time? [Read the six-minute visual brief](README.md).**
+
+**Grant authority per business action, enforce it at execution, and expand it only within permitted policy limits using outcome evidence and accountable ownership.** This paper explains that control model for regulated operations. An agent's freedom to investigate does not itself grant permission to change a business record.
 
 An advisor approves an agent's proposed account update. Before it executes, an operations specialist changes the same record. The agent submits the original request, the downstream service times out, and the agent retries.
 
@@ -77,7 +79,7 @@ Evaluation should test the business state and the path taken to reach it. Includ
 
 Measure separately by workflow, risk class and account population. A high overall success rate can conceal a dangerous minority case. Zero failures in a small pilot does not establish that rare failures are acceptably unlikely.
 
-Promotion requires a named business owner, security/risk review, a defined observation period and an agreed error budget. Control breaches should disable the affected action immediately; noisy quality signals need a documented threshold and a human-owned recovery process.
+Promotion requires a named business owner, security/risk review, a defined observation period and agreed quality and control thresholds. The action's legal and business-policy ceiling still applies: measured quality cannot waive a required human approval. Control breaches should disable the affected action immediately; noisy quality signals need a documented threshold and a human-owned recovery process.
 
 ## Evidence should explain the action without copying everything
 
@@ -101,4 +103,4 @@ That is the autonomy worth earning.
 
 ---
 
-[Inspect the reference design](reference-design.md) · [Read the delivery companion](01-operating-model-wins.md) · [Sources and scope](SOURCES.md)
+[Inspect the reference design](reference-design.md) · [Separate six-layer delivery architecture](https://github.com/appliedgenai/intent-to-production) · [Sources and scope](SOURCES.md)

@@ -1,3 +1,5 @@
+> Earlier delivery essay. The current six-layer architecture, tool map and integration contracts are in [Intent to Production](https://github.com/appliedgenai/intent-to-production). This repository’s main paper is [Earned Autonomy](README.md), on agent action authority.
+
 # AI-DLC: From Intent to Evidence
 
 ### The ecosystem behind dependable AI-native software delivery

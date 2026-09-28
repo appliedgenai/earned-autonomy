@@ -1,75 +1,72 @@
 # Earned Autonomy
 
-### From an advisor's request to work actually resolved.
+### How to give enterprise agents permission to act in regulated workflows
 
-**A six-minute visual brief · Mohit Mittal**
+**A six-minute visual brief · Mohit Mittal · September 2026**
 
-An advisor is preparing for a client meeting. The client's mailing address needs correcting. An assistant could find the account, prepare the change and initiate the maintenance workflow—giving the advisor more time for the conversation.
+**An enterprise should grant an agent bounded authority over specific business actions, with enforceable limits, verified outcomes and an accountable owner.** Evidence can justify expanding that authority within the firm's permitted boundaries; it cannot remove a legal or business requirement for human approval.
 
-But preparing a change and safely completing it are different problems. **The opportunity is to close more work, with less human effort, while preserving control over every action.** Here is the operating model I would use for that journey.
+That is the message of this paper. Its subject is **agent autonomy in regulated operations**: moving from useful answers to dependable action. The financial-services examples are illustrative designs.
 
-## 1 · Give the assistant the right amount of authority
+[Read the full paper](02-agents-you-can-audit.md) · [Inspect the reference design](reference-design.md) · [Research sources](SOURCES.md)
 
-*First 90 seconds · Start with the business action*
+## 1 · Separate freedom to reason from permission to act
 
-[![One advisor assistant, different autonomy ceilings for each action](diagrams/p2-autonomy-per-action.png)](diagrams/p2-autonomy-per-action.png)
+An assistant may investigate a problem through several steps, compare sources and prepare a proposal. That reasoning flexibility does not give it permission to change an account or send a client communication.
 
-The assistant may summarize information, draft a follow-up and schedule a meeting. Those actions do not deserve identical permissions. For our address-change example, start with a verified proposal and human approval; existing identity, fraud and account rules remain authoritative.
+| Decision | Who or what controls it? |
+|---|---|
+| How should the agent investigate and propose? | The model and harness, inside a bounded task and tool scope. |
+| May this exact business action execute now? | Current entitlements, business policy, approval conditions and destination controls. |
 
-**Autonomy belongs to the action.** Expand it only when that workflow's outcomes, exception load and control evidence justify the move. A better model does not automatically earn broader business authority.
+[![Different actions within one assistant have different autonomy ceilings](diagrams/p2-autonomy-per-action.png)](diagrams/p2-autonomy-per-action.png)
 
-*The ladder is illustrative, not a universal policy. Quality drift follows defined thresholds; a control breach restricts the affected action immediately.*
+*The ladder is illustrative. Each action has a policy ceiling. Better model performance does not raise that ceiling automatically.*
 
-## 2 · Make the approved action survive contact with reality
+A meeting summary, a draft follow-up and an account update belong to different permission classes—even when one assistant performs all three. Assess authority **per action, population and environment**. Start with drafts or supervised execution where appropriate, and name the owner who can expand, restrict or stop the action.
 
-*Next two minutes · Design the difficult part*
+This matters to an advisor platform because less effort preparing work has limited value if completion creates more work for operations. [FINRA's 2026 GenAI discussion](https://www.finra.org/rules-guidance/guidance/reports/2026-finra-annual-regulatory-oversight-report/gen-ai) addresses authority, supervision and auditability concerns. The design below is an engineering response, not a regulator-prescribed architecture.
 
-The advisor approves the address change. Before execution, operations updates the same record. Later, a submitted write times out. A naive retry could repeat a change that already succeeded.
+## 2 · Put permission at the point of execution
 
-[![Reasoning proposes an action; deterministic policy controls it; assurance records the outcome](diagrams/p2-model-proposes-policy-decides.png)](diagrams/p2-model-proposes-policy-decides.png)
+Consider a mailing-address correction. The advisor approves the proposed change. Before execution, someone updates the same record. The submitted write later times out.
 
-Three architectural decisions resolve the ambiguity:
+Two questions now matter: **is the approval still valid, and did the action happen?** A fluent model response answers neither.
 
-- **Bind approval to the exact proposal and record version.** Changed relevant data means fresh review. Recheck permissions and policy before writing.
-- **Treat an uncertain result as a state to reconcile.** Use an operation ID, conditional writes and duplicate prevention where the destination supports them. Never assume a timeout means nothing happened.
-- **Verify the business outcome.** Tell the advisor “completed” only when authoritative state confirms it. Otherwise show an owned exception, with the evidence needed to resolve it.
+[![The agent proposes; policy and execution services control the action; assurance records the outcome](diagrams/p2-model-proposes-policy-decides.png)](diagrams/p2-model-proposes-policy-decides.png)
 
-*The allowed path includes durable execution and destination-side authorization. Human approval does not bypass those checks. MCP connects tools; it does not supply the business policy.*
+The action contract names the actor, target, permitted fields, evidence, approval requirements, expected record version, completion condition and recovery owner. Approval binds to that exact proposal. Execution rechecks rights, policy and relevant record state. Material changes require fresh review.
 
-Now the assistant can close the request—or explain precisely why it cannot. The advisor is not left guessing, and operations does not inherit an invisible failure.
+Use durable operation identity, conditional writes and destination-supported duplicate prevention. A timeout produces an **unknown outcome** until reconciliation resolves it. A kill switch stops new actions and has a separate runbook for work already in flight. Human approval and MCP connectivity do not replace these controls.
 
-## 3 · Turn one dependable workflow into a reusable capability
+The user sees “completed” only after authoritative state confirms completion. Otherwise, the system shows a pending or failed result with a named resolution path.
 
-*Next 90 seconds · Connect runtime discipline to delivery*
+## 3 · Make agent observability explain business consequences
 
-The next team wants a similar capability. Rebuilding the controls would make every use case another integration project. This is where the software-delivery operating model matters.
+A model trace can show tool calls, latency and tokens. The business needs to know **who authorized what, what changed and whether the request was resolved**.
 
-[![Six layers connect business intent to execution and evidence, with evaluation throughout](diagrams/p1-six-layers.png)](diagrams/p1-six-layers.png)
+Link the request and action IDs to the proposal, source versions, policy decision, approval, execution receipt and verified outcome. Record concise decision factors; hidden model reasoning is unnecessary. Apply access and retention rules to sensitive evidence.
 
-For the same address-change workflow: **Intent** defines completion and exclusions. **Knowledge** supplies account rules and API contracts. **Context** brings only authorized, current evidence. **Execution** prepares and performs bounded work. **Control** tests and enforces the rules. **Memory** links approvals to verified outcomes and future evaluations.
+Monitor stale approvals, denied actions, repeated attempts, uncertain writes, overdue exceptions, reviewer corrections and total workflow cost. A successful tool response is not always a completed business process.
 
-The shared platform owns common identity, gateways, registries and evidence interfaces. Domain teams own business rules, acceptance cases and recovery. The reuse test: a second domain adopts the same contracts without creating another harness or audit pipeline.
+Observability has an operational purpose: detect a problem, restrict the affected action, give an owner enough evidence to recover, and add a regression case before restoring authority.
 
-*The diagram's “small build” expresses a preference for reuse, not an integration estimate. Traces require curation and redaction before becoming test cases.*
+## 4 · Earn expansion with evidence and recovered capacity
 
-## The ending: did the advisor get time back?
+Evaluate wrong-account selection, revoked rights, stale data, injected document instructions, duplicate requests, policy outages and partial completion. Test disruptive cases outside live customer workflows. Review results by action and risk cohort; zero failures in a small pilot does not establish rare-event safety.
 
-*Final minute · Prove the outcome*
+Expansion requires an accountable business owner, applicable risk review, defined observation criteria and a permitted policy ceiling. Restrictions need explicit triggers and a recovery process. Model confidence alone is never the promotion rule.
 
-A fast proposal is not the result. A correctly resolved request, with less total human effort, is.
+Measure the result from request arrival through resolution:
 
-**Recovered capacity = baseline human effort − handling, review, exception and rework effort after automation.**
+**Recovered human capacity = baseline effort − handling, review, exception and rework effort after automation.**
 
-For this pilot, measure human minutes per eligible request, verified completion, unresolved outcomes, exception age and total workflow cost. Keep quality visible beside speed. Expand only when the evidence supports both.
+Report that beside verified completion, unresolved outcomes, exception age, quality and total cost per completed workflow. Include unsuccessful attempts and operational support. Faster drafting that produces more reconciliation has not delivered the intended benefit.
 
-That connects the two halves of the architecture: a delivery model that makes dependable capabilities repeatable, and an execution model that earns the right to act. The business gets capacity it can measure, with an explanation for every consequential change.
+The practical starting point is one bounded action with clear completion semantics and manageable recovery. Prove that it closes work under control; then reuse its identity, policy, execution and evidence interfaces for another action.
 
-## Optional detail
+---
 
-[AI-DLC: From Intent to Evidence](03-intent-driven-ai-dlc.md) — a companion on people, process, technology, build versus buy, patterns and metrics.
+**About the author:** Mohit Mittal is a Chief Architect with 22+ years in enterprise architecture and distributed systems. His experience includes governed agent infrastructure and MCP servers in healthcare, and production LLM/RAG systems at Chegg. These financial-services examples are independent proposals, not claimed deployments.
 
-[Agents you can audit](02-agents-you-can-audit.md) · [Operating model wins, not tooling](01-operating-model-wins.md) · [Reference design and failure cases](reference-design.md)
-
-**About me:** I'm Mohit Mittal, a Chief Architect with 22+ years in enterprise architecture and distributed systems. My experience includes governed agent infrastructure and MCP servers in healthcare, and production LLM/RAG systems at Chegg. My focus is translating architecture into enforceable behavior and measurable business outcomes.
-
-Independent engineering proposals; the scenario is synthetic, not a claimed deployment. [Sources and scope](SOURCES.md) · [CC BY 4.0](LICENSE.md). Select a diagram to view it at full resolution.
+[Full paper](02-agents-you-can-audit.md) · [Failure cases and reference design](reference-design.md) · [Separate six-layer AI-DLC architecture](https://github.com/appliedgenai/intent-to-production) · [Sources](SOURCES.md) · [CC BY 4.0](LICENSE.md)

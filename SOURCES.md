@@ -13,6 +13,14 @@ Reviewed 28 September 2026. Links below support external context; the architectu
 
 The portfolio does not claim legal compliance, measured production savings, an implemented policy engine, or validated performance of the sample design. Author experience is based on the author's supplied professional background. No client records, employer source code or internal architecture documents are included.
 
+## Runtime architecture research
+
+- [Anthropic: Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents): workflow/agent distinctions inform the separation of reasoning flexibility from execution authority.
+- [AWS Builders' Library: safe retries](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/): operation identity and API semantics inform retry and reconciliation design. Adapters cannot create destination guarantees.
+- [NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework): voluntary governance context, not certification of this design.
+
+The current six-layer delivery architecture is in its [dedicated repository](https://github.com/appliedgenai/intent-to-production). Earlier delivery essays retained here are background material; this repository's entry point concerns runtime business-action authority.
+
 ## AI-DLC companion
 
 The [article](03-intent-driven-ai-dlc.md) and [playbook](ai-dlc-implementation-playbook.md) use these primary sources, checked 28 September 2026:

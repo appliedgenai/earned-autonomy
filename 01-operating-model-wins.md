@@ -1,3 +1,5 @@
+> Earlier delivery essay. The current six-layer architecture, tool map and integration contracts are in [Intent to Production](https://github.com/appliedgenai/intent-to-production). This repository’s main paper is [Earned Autonomy](README.md), on agent action authority.
+
 # Operating model wins, not tooling
 
 ### Six layers for AI-native delivery you can prove

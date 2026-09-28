@@ -20,9 +20,12 @@ The workflow has these states:
 stateDiagram-v2
     [*] --> Draft
     Draft --> AwaitingApproval: Validated proposal
-    AwaitingApproval --> Authorized: Approval bound to proposal
-    Authorized --> Executing: Current policy and state checks pass
-    Authorized --> NeedsReview: Stale or changed conditions
+    AwaitingApproval --> ApprovedProposal: Approval bound to proposal
+    AwaitingApproval --> Cancelled: Rejected or withdrawn
+    ApprovedProposal --> Executing: Fresh authorization and state checks pass
+    ApprovedProposal --> NeedsReview: Stale, expired or changed conditions
+    ApprovedProposal --> Denied: Current authorization denies action
+    ApprovedProposal --> Cancelled: Withdrawn before dispatch
     Executing --> Verifying: Receipt available
     Executing --> Unknown: Timeout or uncertain response
     Unknown --> Verifying: Reconciliation finds outcome
@@ -32,9 +35,13 @@ stateDiagram-v2
     Exception --> NeedsReview: Owner resolves next action
     NeedsReview --> Draft: New proposal required
     Completed --> [*]
+    Denied --> [*]
+    Cancelled --> [*]
 ```
 
 Persist transitions durably. Distinguish a known rejection from an unknown outcome. The operation key binds the account, proposal and action; repeated requests with a different payload must be rejected, not treated as equivalent.
+
+Cancellation before dispatch does not prove cancellation of an in-flight side effect. Once execution begins, the stop/reconciliation runbook determines whether the destination can cancel, must finish, or needs an owned exception.
 
 ### Architectural decisions and their costs
 
