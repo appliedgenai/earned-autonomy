@@ -8,7 +8,20 @@ Explain which agent action can receive more authority, what evidence supports th
 
 The current revision uses four action-scoped modes, a shared harness, an agentic console and continuous evaluation. It is a reference architecture, not a deployed product or an assertion that any particular firm lacks these capabilities. Work on this paper separately from the [AI-DLC architecture](https://github.com/appliedgenai/intent-to-production).
 
-## Current homepage revision
+## Current first-time-reader revision
+
+Published and verified in [1feb658](https://github.com/appliedgenai/earned-autonomy/commit/1feb65856c1779948ddebbfa8f9f310ae7d6a8a1). The opening now defines earned autonomy and states three key decisions before introducing the architecture: delegate actions separately, require evidence before expanding permission, and enforce/monitor permission outside the model. The business goal is correctly resolved work with less total human effort.
+
+- Defined harness, standing grant and exact-proposal approval in plain language.
+- Made SC-42 a fictional account-maintenance request with conflicting document/account addresses. The discrepancy does not establish client intent.
+- Explained why the example has two actions: address maintenance demonstrates controlled execution and recovery; an internal specialist task demonstrates a separate decision about broader permission.
+- Added the missing events before OP-42: required verification, exact approval, fresh checks and a response timeout. Explained the case-specific temporary hold, pending enforcement, later lookup/state verification and separate case-closure decision.
+- Architecture and source reviewers found no material blocker. The first-time-reader reviewer requested a reason and scope for the hold; the revised caption supplies both and received an architecture rereview.
+- Preserved all six diagrams and the statement **The future of AI depends on disciplined engineering.** Rechecked 73 relative links/anchors. The README has 1,077 whitespace-separated words including Markdown and image alternative text; the six-minute path remains a guided scan.
+- Published README and AGENTS contents match the local reviewed files. Inspected the live first screen and complete rendered prose; the definition and all three decisions are visible before the worked example.
+- Added the first-time-reader criteria to persistent project instructions. No deployment, measured savings or executed qualification tests are claimed.
+
+## Previous homepage layout revision
 
 Published in [d6954c2](https://github.com/appliedgenai/earned-autonomy/commit/d6954c2bd90cf7f0d1c13cb544a4a5bc44526914) at the same repository-root URL already shared with Billy. The homepage is now a complete guided scan with all six runtime-authority diagrams embedded directly: modes, harness, execution, console, decision record and evaluation loop. Takeaways and captions connect the same SC-42 case across figures. OP-42 is explicitly unknown in the console and verified later in the evidence record.
 
@@ -17,7 +30,7 @@ Published in [d6954c2](https://github.com/appliedgenai/earned-autonomy/commit/d6
 - Clarified that A0–A3 are proposed vocabulary and that Jev is distinct from an LLM judge; any candidate evaluator still requires domain qualification.
 - Separate architecture, skeptical-reader and source reviewers rereviewed this revision; their material findings are resolved. The lead inspected all six rendered PNGs and their GitHub homepage presentation.
 - Verified all six live images loaded at a rendered width of 823 pixels. Their Git blob hashes match the local images reviewed. Published README, AGENTS and diagram-index contents match the local files exactly.
-- Document validation checked 73 relative links/anchors with no errors. README contains 820 whitespace-separated words including Markdown and image alternative text. Six minutes denotes a guided scan, not a timed claim about reading every diagram label.
+- Document validation checked 73 relative links/anchors with no errors. That layout revision's README contained 820 whitespace-separated words including Markdown and image alternative text. Six minutes denotes a guided scan, not a timed claim about reading every diagram label.
 - Added persistent instructions requiring the six core diagrams to remain on the homepage. No product implementation, empirical evaluation or new production outcome is claimed.
 
 The records below describe the preceding substantive architecture revision. Its former two-image homepage has been superseded by the six-image homepage above.
