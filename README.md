@@ -2,75 +2,102 @@
 
 ### Give agents bounded authority. Expand it when verified outcomes justify it. Keep it revocable.
 
-**A six-minute visual brief · Mohit Mittal · September 2026**
+**Agent autonomy in regulated operations · Mohit Mittal · September 2026**
 
-A better model can produce a stronger recommendation while leaving the business with the same approval, exception and recovery work. The next decision is **which action, for which cases, can now be delegated—and whether doing so actually reduces total work.**
+The business question is **which actions can agents take over while reducing total advisor and operations effort at acceptable quality and cost?**
 
-**Manage permission as a versioned operating decision, separate from the model release.** Use a shared harness to enforce it and an agentic console to review outcomes and change grants. An agent can improve without receiving more authority, or lose permission for one action while continuing useful work elsewhere.
+Build one shared path to **propose, authorize, execute and verify** business actions. Treat permission as a versioned operating decision, separate from a model release. Expand it only when delegation is permitted, dependable and worthwhile.
 
-[Full paper](02-agents-you-can-audit.md) · [Reference design](reference-design.md) · [Sources](SOURCES.md)
+**Six-minute scan:** follow the six takeaways and captions. All six diagrams are on this page; select any image for full resolution.
 
-## 1 · Start with the work you want to remove
+[Permissions](#permission-modes) · [Harness](#shared-harness) · [Execution](#execution) · [Console](#operator-console) · [Evidence](#evidence-record) · [Evaluation](#evaluation-loop)
 
-Consider synthetic service case **SC-42**. An advisor asks why it remains open. Operations may need to reconstruct the request, compare submitted evidence with the account record, identify missing verification and find the right specialist.
+<a id="1--start-with-the-work-you-want-to-remove"></a>
 
-An agent could assemble that evidence and choose the next permitted source as the facts emerge. The intended benefit is less searching, rekeying and back-and-forth. Compare it with a fixed checklist plus extraction; use an agent only where the variable investigation earns its complexity.
+## One service case, two different permissions
 
-The investigation finds a possible address mismatch. That does not establish the client's intent to change it. The assistant may prepare an account-update proposal and a linked internal specialist follow-up. Those actions have different permission limits.
+In synthetic case **SC-42**, an advisor asks why a request remains open. An agent investigates permitted documents and account records, choosing the next source as facts emerge. Use a fixed workflow where a checklist plus extraction suffices.
 
-## 2 · Use four modes, scoped to each action
+An address mismatch does not establish client intent. The assistant can prepare an address-update proposal and, if necessary, a specialist follow-up. Those actions need separate permissions.
 
-[![Four autonomy modes apply to a specific action and cohort; suspension is a separate control state](diagrams/p2-autonomy-per-action.png)](diagrams/p2-autonomy-per-action.png)
+<a id="permission-modes"></a>
+<a id="2--use-four-modes-scoped-to-each-action"></a>
 
-The modes are **shadow, propose, execute with approval, and execute within delegated limits**. They describe a particular action and case population, not one maturity score for the whole agent.
+## 1 · What may this action do?
 
-SC-42's follow-up creation starts with approval for each execution. Its address update also requires approval and retains that ceiling in this design. Shadow testing has no business effects and cannot prove that live writes or recovery work correctly.
+**Give authority to a defined action and case population.** A0–A3 are this paper's proposed vocabulary, not an industry standard or mandatory progression.
 
-## 3 · Make one promotion decision concrete
+[![Four modes: shadow, propose, approved execution and bounded execution, with evidence requirements and a separate suspension control](diagrams/p2-autonomy-per-action.png)](diagrams/p2-autonomy-per-action.png)
 
-Imagine requesting permission for the assistant to create selected specialist follow-ups without reviewing each one. Three questions determine the decision:
+*Follow-up creation may qualify for A3; the address update retains A2 approval. Shadow evidence cannot prove live-write safety.*
 
-| Test | What must be established |
-|---|---|
-| **Permitted?** | Applicable policy allows delegation for this action, actor, case type and environment. Mandatory approvals remain. |
-| **Dependable?** | The follow-up is necessary, linked to the right case, routed correctly and created without duplicate effects. Exceptions and restriction controls work. |
-| **Worthwhile?** | Avoided handling and review exceed added audit, exception and rework effort at acceptable quality and total cost. |
+<a id="shared-harness"></a>
+<a id="4--put-every-agent-under-a-supported-harness-and-an-operational-console"></a>
 
-A syntactically valid follow-up and a high judge score do not answer all three.
+## 2 · What makes that permission enforceable?
 
-**A hypothetical decision:** retain approval while domain review finds unnecessary or misrouted follow-ups. Improve the system and reevaluate. If the agreed evidence supports delegation, the owner grants bounded execution for named case types and queues, with volume limits, expiry and a validated configuration. The account-update permission does not change.
+**Bind every registered agent to a shared harness with versioned controls.** Reuse platform services for identity, tools, grants, execution, evidence and recovery.
 
-A defined severe control breach can suspend affected new dispatches. Operations reconciles work already in flight. Restoring permission requires repair evidence and a recorded decision. [Worked promotion and restriction record](02-agents-you-can-audit.md#one-action-through-the-four-modes)
+[![Registered agents connect to shared controls; operational evidence feeds evaluation and the console, which requests grants and receives enforcement acknowledgments](diagrams/p2-agent-harness.png)](diagrams/p2-agent-harness.png)
 
-## 4 · Put every agent under a supported harness and an operational console
+*Each agent supplies its scope and evidence. A provider that cannot enforce a required control stays outside the affected execution mode.*
 
-Use a **shared harness with a versioned configuration for each agent**: identity, permitted context and tools, action grants, execution limits, required evaluations, evidence and exception ownership. Adopt existing platform services where they meet these contracts. Each agent/provider must demonstrate that the controls can actually be enforced.
+<a id="execution"></a>
 
-The **agentic console** makes those responsibilities operable:
+## 3 · What happens before a business change?
 
-[![Illustrative agentic console shows action-level grants, a promotion decision and unconfirmed restriction separately from in-flight outcomes](diagrams/p2-agentic-console.png)](diagrams/p2-agentic-console.png)
+**A judge assesses evidence; current policy and permissions control dispatch.** An LLM judge or TypeSafe's Jev is a candidate semantic evaluator that must be qualified against domain-labeled cases. Neither grants authority. [Evaluator limits](02-agents-you-can-audit.md#where-jev-fits)
 
-Owners review permission changes. Operations sees unknown outcomes, queue pressure and the status of restriction requests. A clicked stop button is not evidence that dispatch has stopped; the console shows runtime confirmation and unresolved in-flight work.
+[![Investigation produces an exact proposal; judge evidence and required human approval return through fresh checks before controlled execution and outcome verification](diagrams/p2-model-proposes-policy-decides.png)](diagrams/p2-model-proposes-policy-decides.png)
 
-## 5 · Turn continuous evaluation into two decisions
+*Approval binds the exact proposal. Fresh checks precede dispatch. A timeout leaves an unknown outcome with a recovery owner, not permission for a blind retry.*
 
-Required policy and pre-action checks run on every applicable action. Continuous evaluation combines outcome monitoring, risk-based semantic checks and independently reviewed samples of accepted cases. Offline regression and held-out evaluation qualify proposed changes.
+<a id="operator-console"></a>
 
-LLM judges, including **TypeSafe's Jev**, can assess semantic questions such as whether evidence supports a proposed resolution. Their verdicts remain fallible and cannot authorize execution. [Evaluator design and Jev's limits](02-agents-you-can-audit.md#where-jev-fits)
+## 4 · Can operations see and restrict what is happening?
 
-Evaluation feeds two loops:
+**Show requested changes, confirmed enforcement and unresolved work separately.** Owners review grants; operations handles exceptions.
 
-- **Change behavior:** repair sources, retrieval, prompts or tools; consider a model change or training when justified. Evaluate the candidate before rollout.
-- **Change authority:** retain, expand, restrict or suspend a specific grant, within policy, through accountable decisions.
+[![Agentic console shows deferred follow-up promotion, a restriction awaiting runtime acknowledgment and unknown operation OP-42 assigned to account operations](diagrams/p2-agentic-console.png)](diagrams/p2-agentic-console.png)
 
-Judge scores describe one part of the evidence. Track verified outcomes, missed escalation, unsafe passes, unknown-operation age, total human effort and time to enforce restrictions by action, cohort and version. A human-approved case is not fully autonomous; it can still deliver substantial value.
+*In this synthetic snapshot, follow-up promotion is deferred and address operation OP-42 needs reconciliation. A stop request is not confirmed enforcement or an undo of in-flight work.*
 
-**The investment decision:** establish one reusable path for registered agents to propose actions, obtain permission, execute, and produce verifiable outcomes. Prove the benefit on one case class. Then onboard a second action through the same grant, execution and evidence interfaces.
+<a id="evidence-record"></a>
 
-**Success is more correctly resolved work with less total human effort.** A verified address update completes that action; SC-42 closes only after its separate resolution conditions and closure authorization are satisfied.
+## 5 · Can we reconstruct the result?
+
+**Link the exact proposal, authority, execution and verified outcome.** This record continues OP-42 after the console snapshot.
+
+[![SC-42 decision record follows proposal and approval through an uncertain write to later verification and evaluation](diagrams/p2-decision-record.png)](diagrams/p2-decision-record.png)
+
+*Authoritative lookup now confirms the address update without repeating the write. Closing SC-42 still requires its separate resolution conditions and authorization. An approved action is not fully autonomous case resolution.*
+
+<a id="evaluation-loop"></a>
+<a id="5--turn-continuous-evaluation-into-two-decisions"></a>
+<a id="3--make-one-promotion-decision-concrete"></a>
+
+## 6 · What earns—or removes—the next permission?
+
+**Improve behavior and review authority through separate decisions.** Required checks run on applicable actions; outcome monitoring and reviewed samples assess operation; held-out evaluation qualifies changes.
+
+[![Operational evidence feeds separate system-improvement and authority-review loops, with immediate restriction for defined severe triggers](diagrams/p2-evaluation-loop.png)](diagrams/p2-evaluation-loop.png)
+
+*Engineers repair the system; training is optional. Accountable owners change grants within policy ceilings. Defined severe events trigger restrictions; restoration requires repair evidence and an authorized decision.*
+
+**For the same follow-up action:** retain A2 until necessity, routing, recovery and net-benefit evidence support A3. Any grant names eligible cases, queues, limits, expiry and configuration. Address-update authority stays unchanged.
+
+Observe unauthorized effects, incorrect completion, missed escalation, judge unsafe passes, unknown-outcome age, restriction-enforcement delay and total human effort. Segment by action, case population and version, with explicit denominators, review coverage and observation windows. [Metric definitions](02-agents-you-can-audit.md#observe-what-makes-autonomy-defensible)
+
+## The investment decision
+
+Prove **more correctly resolved work with less total human effort**, including review and recovery, on one case class. Then reuse the interfaces for a second action, qualifying its controls and outcomes independently.
+
+**The future of AI depends on disciplined engineering.**
+
+[Full paper](02-agents-you-can-audit.md) · [Worked reference design](reference-design.md) · [Sources](SOURCES.md)
 
 ---
 
 **Author:** Mohit Mittal, Chief Architect, with 22+ years in enterprise architecture and distributed systems, including production LLM/RAG work at Chegg and governed agent infrastructure and MCP servers in healthcare. SC-42, the console and promotion decisions are illustrative designs, not employer deployments or measured results.
 
-[Full paper](02-agents-you-can-audit.md) · [Reference design](reference-design.md) · [Separate AI-DLC architecture](https://github.com/appliedgenai/intent-to-production) · [CC BY 4.0](LICENSE.md)
+[Separate AI-DLC architecture](https://github.com/appliedgenai/intent-to-production) · [CC BY 4.0](LICENSE.md)
