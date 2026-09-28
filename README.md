@@ -54,7 +54,7 @@ The address update illustrates controlled execution; the follow-up illustrates a
 
 ## 3 · What happens before a business change?
 
-**Check the exact proposal, approval and current permissions before sending the action.** An AI evaluator—an LLM judge or TypeSafe's Jev—can assess whether evidence supports the proposal. It must first be tested against domain-expert judgments; its verdict cannot grant permission. [Evaluator limits](02-agents-you-can-audit.md#where-jev-fits)
+**Check the exact proposal, approval and current permissions before sending the action.** An AI evaluator—an LLM judge or TypeSafe's Jev—can assess whether evidence supports the proposal. It must first be tested against domain-expert judgments; its verdict cannot grant permission. [Evaluator limits](earned-autonomy-operating-model.md#where-jev-fits)
 
 [![Investigation produces an exact proposal; judge evidence and required human approval return through fresh checks before controlled execution and outcome verification](diagrams/p2-model-proposes-policy-decides.png)](diagrams/p2-model-proposes-policy-decides.png)
 
@@ -94,7 +94,7 @@ The address update illustrates controlled execution; the follow-up illustrates a
 
 **The follow-up decision:** retain approval until policy permits delegation and evidence shows necessary, correctly routed tasks, reliable recovery and less total human work. Then consider a limited grant for named case types and queues, with limits and expiry. The address update still needs approval.
 
-Track incorrect or unauthorized changes, missed escalations, errors evaluators accept, unresolved-operation age, time to enforce restrictions and total human effort. Compare by action, case type and version, with explicit denominators, review coverage and observation windows. [Metric definitions](02-agents-you-can-audit.md#observe-what-makes-autonomy-defensible)
+Track incorrect or unauthorized changes, missed escalations, errors evaluators accept, unresolved-operation age, time to enforce restrictions and total human effort. Compare by action, case type and version, with explicit denominators, review coverage and observation windows. [Metric definitions](earned-autonomy-operating-model.md#observe-what-makes-autonomy-defensible)
 
 ## The investment decision
 
@@ -102,7 +102,7 @@ Start with one case type. Compare correct resolution, total human effort—inclu
 
 **The future of AI depends on disciplined engineering.**
 
-[Full paper](02-agents-you-can-audit.md) · [Worked reference design](reference-design.md) · [Sources](SOURCES.md)
+[Full paper](earned-autonomy-operating-model.md) · [Worked reference design](reference-design.md) · [Sources](SOURCES.md)
 
 ---
 

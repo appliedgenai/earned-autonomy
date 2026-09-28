@@ -22,6 +22,6 @@ The portfolio does not claim legal compliance, measured production savings, an i
 
 ## Separate AI-DLC paper
 
-The current delivery architecture and its sources are maintained in [Intent to Production](https://github.com/appliedgenai/intent-to-production) and its [source inventory](https://github.com/appliedgenai/intent-to-production/blob/main/SOURCES.md). Superseded delivery article paths in this repository point there and preserve links to their earlier versions in Git history.
+The current delivery architecture and its sources are maintained in [Intent to Production](https://github.com/appliedgenai/intent-to-production) and its [source inventory](https://github.com/appliedgenai/intent-to-production/blob/main/SOURCES.md).
 
 Product references establish documented capabilities, not contractual suitability, security approval, validated integration or measured domain performance. Tool placement and control design are proposals to evaluate.
