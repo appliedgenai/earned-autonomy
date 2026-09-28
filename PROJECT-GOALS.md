@@ -2,55 +2,53 @@
 
 Updated 28 September 2026.
 
-## Goal
+## Goal and scope
 
-Explain when an enterprise should use an agent, which specific business actions it may perform, and how verified outcomes justify retaining, expanding or restricting that authority. Show the business benefit, evaluation design, observability and accountable operating decisions needed for regulated workflows.
+Explain when an enterprise should use an agent, which specific business actions it may perform, and how verified outcomes inform retaining, expanding or restricting its authority. Connect business benefit, evaluation, observability and accountable operating decisions.
 
-The brief must make this argument understandable in approximately six minutes; detailed architecture and examples belong in the full paper. Reading time is a design target, not a guarantee.
+The entry point is a six-minute visual brief; detailed controls, rubrics, failure behavior and metrics belong in the full paper and reference design. Reading time is a design target, not a guarantee. Work on Earned Autonomy separately from the [AI-DLC architecture](https://github.com/appliedgenai/intent-to-production), unless the user expands scope.
 
-## Current scope
+## Current publication — completed
 
-- Work on **Earned Autonomy first**, separately from the [AI-DLC architecture](https://github.com/appliedgenai/intent-to-production).
-- Keep people, process and technology connected to specific decisions and failure behavior.
-- Include LLM-as-a-judge and evaluate the role of **Jev from TypeSafe**, without treating either as a final compliance or authorization authority.
-- Explain evaluation feedback, possible model improvement/training, changes in autonomy, and meaningful observability measures.
+The revised brief, full paper and reference design are published and verified on GitHub. This revision replaces the earlier paper at `fb580b3` and completes the work identified when project instructions were added at `4bb6cc0`.
 
-## Current publication
+| Artifact | Published commit | Verification |
+|---|---|---|
+| Four diagrams, editable SVGs and diagram index | [971328b](https://github.com/appliedgenai/earned-autonomy/commit/971328b1a305dfd5e7deaafed99ec1b237b19b19) | All four rendered PNGs visually reviewed locally; all four loaded in the published brief, paper or reference design. |
+| Action contract and fifteen evaluation scenarios | [f48918f](https://github.com/appliedgenai/earned-autonomy/commit/f48918fdb5977cd75f47bdf18726d0af1edffa0b) | JSON parses; fifteen unique scenario IDs; final architecture rereview resolved current-grant and unknown-evidence semantics. |
+| Brief, paper, reference design, sources and navigation cleanup | [c1936e6](https://github.com/appliedgenai/earned-autonomy/commit/c1936e6bce3d76dc2000f746966eaa9c16240315) | Published thesis, Jev section, feedback loops, corrected metric and case-closure boundary inspected. Reference Mermaid diagram renders. |
 
-The last paper revision was published at `fb580b3`. It clarified action authority and approval/recovery semantics. A later conceptual review found additional shortcomings in the existing diagrams. The checklist below concerns that next revision; it is not completed by the earlier commit.
+## Completed revision checklist
 
-## Findings to resolve
+- [x] Justify adaptive investigation against a deterministic workflow or extraction baseline.
+- [x] Use synthetic service case SC-42 throughout, without claiming a production deployment.
+- [x] Replace the old ladder with an action-authority matrix; show the same linked follow-up action gaining or losing permission.
+- [x] Route exact approval through fresh dispatch checks, controlled execution, destination enforcement and outcome verification/reconciliation.
+- [x] Explain code checks, semantic judges and domain adjudication, including accepted-case sampling and evaluator failure.
+- [x] Place LLM-as-a-judge and TypeSafe's Jev accurately, with typed-output, calibration, uncertainty and version limitations.
+- [x] Draw separate system-improvement and authority-review feedback loops, plus immediate restriction for defined severe control events.
+- [x] Explain optional model changes/training with approved data, reviewed labels, held-out evaluation and controlled rollout.
+- [x] Define expansion, restriction, suspension and restoration by action, cohort and version; preserve mandatory approvals.
+- [x] Define autonomy observability measures with denominators, windows, severity, sampling and business-effort qualifications.
+- [x] Distinguish verified action completion from authorized whole-case closure and whole-case autonomous coverage.
+- [x] Resolve source, architecture and skeptical-reader reviews; inspect all four rendered diagrams.
+- [x] Validate relative file/image links, heading anchors, JSON and SVG syntax; audit external destinations.
+- [x] Clean navigation: superseded delivery essays point to the current AI-DLC paper and their original Git-history versions. Historical diagram assets remain labeled as background.
+- [x] Publish and verify the actual GitHub paper, images, reference diagram and history pointers.
 
-- [ ] **Justify agent use.** A plain address update or calendar operation can use a deterministic workflow. Establish a variable investigation problem and compare with a simpler baseline.
-- [ ] **Choose one running example.** Proposed: investigation of an advisor service-case exception, followed by controlled execution of an exact approved action where needed. This is a recommendation awaiting incorporation, not a claimed deployment.
-- [ ] **Replace the autonomy ladder.** Show the same action's modes and limits in an action-authority matrix. Remove distracting portfolio-advice examples and blanket demotion language.
-- [ ] **Repair the runtime diagram.** Human approval must return through fresh checks, then an explicit executor, destination enforcement and authoritative outcome verification/reconciliation.
-- [ ] **Make evaluation operational.** Include code checks, semantic judging, domain adjudication, calibrated uncertainty and review of accepted cases.
-- [ ] **Add Jev accurately.** Candidate for narrow typed judgments; compare domain performance and operating cost. Preserve an insufficient-evidence/escalation path and version the rubric/model.
-- [ ] **Draw two feedback branches.** One changes the system/model after evaluation; the other changes the action's permission grant through an accountable authority decision.
-- [ ] **Define autonomy transitions.** Expansion, restriction, suspension and restoration need action/cohort/version scope, evidence criteria, policy ceilings and recovery rules.
-- [ ] **Define the scorecard.** Include unauthorized effects, incorrect completion, missed escalation, unknown outcomes, evidence completeness, judge unsafe passes, autonomous coverage and human burden.
-- [ ] **Align the evidence example.** Use the same case/action throughout. Show exact approval/authority, actual effect, verified or unknown outcome and owner. Broad meeting-preparation intent does not authorize a calendar invitation.
-- [ ] **Review, render, verify and publish the resulting revision.** Update both brief and full paper coherently. Record actual commit and verification evidence after publication.
+## Decisions to preserve
 
-## Decisions and constraints to preserve
+- Business benefit must justify agent complexity. Compliance constraints alone do not establish the business case.
+- Reasoning flexibility, semantic assessment, business-action permission and verified outcome are separate concerns.
+- The linked specialist-follow-up action starts approval-required; its grant can later be narrowed or expanded. SC-42's account update retains human approval.
+- A judge cannot grant authority. Better system behavior does not automatically increase permission.
+- Training is optional; diagnose source, retrieval, prompt, tool and workflow defects first. Raw traces and unadjudicated judge verdicts are not training truth.
+- Unknown outcomes are valid recorded states. Receipts and verified results are conditional; unresolved work requires an owner.
+- A human-approved case is not counted as fully autonomous. Reduced human effort can still establish value.
+- Low overrides, high judge agreement and a small zero-failure pilot do not prove readiness for broad expansion.
 
-- Business benefit must justify agent complexity. Compliance alone does not require an agent.
-- Reasoning flexibility and execution authority are separate.
-- An LLM judge or Jev supplies probabilistic assessment; deterministic checks and accountable policies decide permitted execution.
-- Training is optional. Fix source/context/tool/workflow defects before assuming model weights are the problem. Do not train blindly on raw traces or unadjudicated judge outputs.
-- Improved behavior does not automatically increase permissions. Required human approvals remain required.
-- Metrics need explicit denominators and cohort/version context. Low override rates and small zero-failure pilots are insufficient evidence for broad promotion.
-- No invented production experience, quantified outcomes or validated vendor integrations.
+## Remaining work and limits
 
-## Completion criteria
+No editorial or publication blocker remains for this revision. The contracts and evaluation cases are design specifications, not an implemented policy engine or executed tests. No Jev benchmark, model training, financial-services integration or measured savings result was produced. A real pilot still requires domain-labeled evaluation, implemented controls, destination guarantees, staffed recovery and agreed acceptance criteria.
 
-A reader can explain why an agent is useful, name its bounded actions, follow execution and evaluation, identify the owner of an exception, and understand exactly how authority can change. The diagrams must express the same rules as the prose. Review findings, source checks, artifact checks and publication verification must support the completion claim.
-
-## Most recent work
-
-- Inspected all three current diagrams in detail.
-- Researched TypeSafe's official Jev documentation, limitations and confidence semantics, MLflow's narrow judge comparison, agent evaluation guidance and FINRA's agent discussion.
-- Obtained separate source and architecture critiques and documented proposed corrections.
-- Added persistent project instructions and this goals file.
-- The diagram/evaluation revision remains pending; saving these instructions does not complete it.
+For the next requested change, read [AGENTS.md](AGENTS.md), [RESEARCH-NOTES.md](RESEARCH-NOTES.md) and [SOURCES.md](SOURCES.md), then inspect the affected published text and actual images. Recheck changing product facts. Do not silently reopen or update the separate AI-DLC paper.
