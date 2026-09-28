@@ -1,0 +1,34 @@
+{
+  "kind": "illustrative-design-contract",
+  "version": "1.0",
+  "action": "submit_mailing_address_maintenance",
+  "synthetic": true,
+  "autonomy": "human_approval_required",
+  "scope": {
+    "permitted_fields": ["mailing_address"],
+    "excluded_actions": ["trade", "money_movement", "beneficiary_change", "investment_recommendation"],
+    "eligibility": "Existing identity, fraud, jurisdiction and business rules must pass"
+  },
+  "authorization": {
+    "intersection": ["current_user_entitlements", "registered_agent_capabilities", "active_workflow_policy", "approved_proposal"],
+    "recheck_at_execution": true,
+    "on_unavailable_policy": "stop_new_writes"
+  },
+  "proposal": {
+    "required_bindings": ["proposal_id", "account_reference", "exact_field_changes", "evidence_references", "relevant_record_version", "policy_version", "expires_at"],
+    "material_change": "invalidate_and_request_new_approval"
+  },
+  "execution": {
+    "requires": ["durable_state", "conditional_write", "payload_bound_idempotency_key", "operation_lookup"],
+    "unsupported_destination": "draft_only_until_alternative_controls_are_accepted",
+    "timeout": "mark_unknown_and_reconcile_before_retry",
+    "success": "authoritative_state_verified_against_approved_proposal"
+  },
+  "exception_owner": "designated_account_operations_queue",
+  "evidence": {
+    "required": ["actor_and_delegation", "proposal_id", "policy_decision", "approval_reference", "tool_version", "operation_id", "receipt_reference", "verified_outcome"],
+    "sensitive_payload_location": "access_controlled_evidence_store",
+    "general_logs": "correlation_ids_and_redacted_metadata_only",
+    "retention": "approved_record_class_schedule_with_legal_hold_support"
+  }
+}
