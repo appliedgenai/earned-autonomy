@@ -37,21 +37,16 @@ This adds friction when records change frequently. Reduce it by checking only re
 Let the model extract intent and prepare a proposal. Let deterministic services authorize and execute it.
 
 ```mermaid
-sequenceDiagram
-    participant A as Advisor
-    participant M as Agent
-    participant P as Policy and approval
-    participant W as Durable workflow
-    participant S as Account service
-    A->>M: Request maintenance
-    M->>P: Typed proposal and evidence references
-    P->>A: Exact change preview
-    A->>P: Approve proposal version
-    P->>W: Authorized execution request
-    W->>S: Conditional write with idempotency key
-    S-->>W: Receipt or uncertain result
-    W->>S: Verify authoritative state
-    W-->>A: Confirmed outcome or owned exception
+flowchart TD
+    A[Advisor requests maintenance] --> M[Agent prepares typed proposal]
+    M --> P[Policy checks and exact change preview]
+    P --> H[Human approves proposal version]
+    H --> W[Workflow revalidates authority and state]
+    W --> S[Account service performs conditional write]
+    S --> V[Verify authoritative outcome]
+    S --> U[Uncertain result requires reconciliation]
+    U --> V
+    V --> R[Advisor receives confirmed result or owned exception]
 ```
 
 The gateway checks identity and policy; the destination service also enforces authorization and concurrency controls. A central gateway without downstream enforcement leaves bypass paths.
