@@ -4,6 +4,8 @@
 
 *Mohit Mittal · September 2026*
 
+**Short on time? [Read the six-minute visual brief](README.md).**
+
 An advisor approves an agent's proposed account update. Before it executes, an operations specialist changes the same record. The agent submits the original request, the downstream service times out, and the agent retries.
 
 Was the approval still valid? Did the first request succeed? Did the retry create a second workflow? Who owns the resolution?
@@ -36,18 +38,9 @@ This adds friction when records change frequently. Reduce it by checking only re
 
 Let the model extract intent and prepare a proposal. Let deterministic services authorize and execute it.
 
-```mermaid
-flowchart TD
-    A[Advisor requests maintenance] --> M[Agent prepares typed proposal]
-    M --> P[Policy checks and exact change preview]
-    P --> H[Human approves proposal version]
-    H --> W[Workflow revalidates authority and state]
-    W --> S[Account service performs conditional write]
-    S --> V[Verify authoritative outcome]
-    S --> U[Uncertain result requires reconciliation]
-    U --> V
-    V --> R[Advisor receives confirmed result or owned exception]
-```
+[![The model proposes; policy decides; assurance records the outcome](diagrams/p2-model-proposes-policy-decides.png)](diagrams/p2-model-proposes-policy-decides.png)
+
+*The architecture shows the control boundary. The allowed path includes a durable workflow, destination-side authorization, concurrency checks and outcome verification. Human approval does not bypass these controls.*
 
 The gateway checks identity and policy; the destination service also enforces authorization and concurrency controls. A central gateway without downstream enforcement leaves bypass paths.
 
@@ -74,6 +67,10 @@ A kill switch stops new actions. It also needs a runbook for actions already in 
 
 ## Earn autonomy with evidence about each action
 
+[![An illustrative autonomy ladder with different permission ceilings per action](diagrams/p2-autonomy-per-action.png)](diagrams/p2-autonomy-per-action.png)
+
+*Illustrative levels, not universal policy. The firm's action-specific rules prevail; quality-driven demotion uses defined thresholds, while control breaches trigger immediate restriction.*
+
 Start with drafts, then supervised execution for a narrow population. Expand only when the action's outcome quality, exception load and operational controls support it. Keep higher-impact actions outside the initial scope.
 
 Evaluation should test the business state and the path taken to reach it. Include wrong-account selection, stale source data, revoked rights, duplicate requests, injected document instructions, policy outages and uncertain writes. Run disruptive cases in isolated test environments; do not insert deliberately flawed items into live customer work.
@@ -83,6 +80,10 @@ Measure separately by workflow, risk class and account population. A high overal
 Promotion requires a named business owner, security/risk review, a defined observation period and an agreed error budget. Control breaches should disable the affected action immediately; noisy quality signals need a documented threshold and a human-owned recovery process.
 
 ## Evidence should explain the action without copying everything
+
+[![A synthetic decision record linking actor, action, reason, policy and time](diagrams/p2-decision-record.png)](diagrams/p2-decision-record.png)
+
+*Synthetic record, including its “production” label and identifiers. Reconstructing an action means inspecting its evidence, not replaying a live side effect. Concise recorded decision factors do not require hidden model reasoning.*
 
 Retain the actor and delegation, proposal identifier, relevant source versions, policy decision, approval, tool version, execution receipt and verified outcome. Link operational traces to a restricted evidence store.
 

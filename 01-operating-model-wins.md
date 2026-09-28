@@ -4,6 +4,8 @@
 
 *Mohit Mittal · September 2026*
 
+**Short on time? [Read the six-minute visual brief](README.md).**
+
 If a coding agent halves implementation time but doubles the review queue, the organization may ship no sooner. If an advisor agent saves four minutes of entry and creates six minutes of exception handling, the business has lost capacity.
 
 Both failures come from optimizing a step while ignoring the system around it.
@@ -15,6 +17,10 @@ Google's [2025 DORA research](https://dora.dev/insights/balancing-ai-tensions/) 
 ## Six layers, with a contract between each
 
 The layers are responsibilities, not a mandate for six new platforms.
+
+[![Six layers, one harness, evaluation first](diagrams/p1-six-layers.png)](diagrams/p1-six-layers.png)
+
+*The original diagram's “small build” expresses a preference for reuse. Integration effort depends on legacy APIs, entitlements and data quality. Production traces are curated and redacted before becoming test cases.*
 
 | Layer | Responsibility | Concrete output |
 |---|---|---|
