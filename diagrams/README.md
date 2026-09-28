@@ -7,4 +7,12 @@ Original diagrams by Mohit Mittal, restored from the supplied portfolio artwork.
 - [Six-layer delivery model](p1-six-layers.png)
 - [Decision record](p2-decision-record.png)
 
+Companion AI-DLC diagrams, created for this portfolio:
+
+- [Intent to evidence](ai-dlc-intent-to-evidence.png)
+- [Build versus buy](ai-dlc-build-buy.png)
+- [Observability across delivery and operation](ai-dlc-observability.png)
+
+Editable SVG sources accompany these three PNG diagrams.
+
 Illustrative architecture, not evidence of an implemented system. Read the captions and qualifications in the [executive brief](../README.md) and articles. PNGs include their titles and can be opened at full resolution.
