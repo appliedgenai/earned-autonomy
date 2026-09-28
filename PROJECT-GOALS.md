@@ -8,7 +8,21 @@ Explain which agent action can receive more authority, what evidence supports th
 
 The current revision uses four action-scoped modes, a shared harness, an agentic console and continuous evaluation. It is a reference architecture, not a deployed product or an assertion that any particular firm lacks these capabilities. Work on this paper separately from the [AI-DLC architecture](https://github.com/appliedgenai/intent-to-production).
 
-## Current revision
+## Current homepage revision
+
+Published in [d6954c2](https://github.com/appliedgenai/earned-autonomy/commit/d6954c2bd90cf7f0d1c13cb544a4a5bc44526914) at the same repository-root URL already shared with Billy. The homepage is now a complete guided scan with all six runtime-authority diagrams embedded directly: modes, harness, execution, console, decision record and evaluation loop. Takeaways and captions connect the same SC-42 case across figures. OP-42 is explicitly unknown in the console and verified later in the evidence record.
+
+- Added the author statement: **The future of AI depends on disciplined engineering.**
+- Shortened surrounding prose and supplied six jump links, full-resolution image links and backward-compatible anchors for the previous five sections.
+- Clarified that A0–A3 are proposed vocabulary and that Jev is distinct from an LLM judge; any candidate evaluator still requires domain qualification.
+- Separate architecture, skeptical-reader and source reviewers rereviewed this revision; their material findings are resolved. The lead inspected all six rendered PNGs and their GitHub homepage presentation.
+- Verified all six live images loaded at a rendered width of 823 pixels. Their Git blob hashes match the local images reviewed. Published README, AGENTS and diagram-index contents match the local files exactly.
+- Document validation checked 73 relative links/anchors with no errors. README contains 820 whitespace-separated words including Markdown and image alternative text. Six minutes denotes a guided scan, not a timed claim about reading every diagram label.
+- Added persistent instructions requiring the six core diagrams to remain on the homepage. No product implementation, empirical evaluation or new production outcome is claimed.
+
+The records below describe the preceding substantive architecture revision. Its former two-image homepage has been superseded by the six-image homepage above.
+
+## Previous substantive architecture revision
 
 Published and verified in [15d4f13](https://github.com/appliedgenai/earned-autonomy/commit/15d4f13f239d11c868749b35f5080f942f7f675c). All seventeen changed/new file blobs match the reviewed local files exactly. The GitHub-rendered brief and full-paper sections were inspected; both brief images and all five full-paper images loaded successfully. The prior published baseline is [7b78189](https://github.com/appliedgenai/earned-autonomy/commit/7b781896e9f5cafe236953b2e43028b717f4736b).
 
@@ -19,7 +33,7 @@ Published and verified in [15d4f13](https://github.com/appliedgenai/earned-auton
 - Added an illustrative console showing current grants, requested promotion, missing evidence, pending enforcement acknowledgment and an unknown operation.
 - Kept inline checks, ongoing monitoring/sample review and offline candidate evaluation distinct. System improvement and authority changes remain separate decisions.
 - Expanded evaluation specifications from fifteen to twenty-two cases, including A0/A1 execution boundaries, unsupported provider controls, restriction acknowledgment and missing promotion evidence.
-- Preserved the execution, evaluation-loop and decision-record diagrams. Six current diagrams have editable SVG sources; the brief uses only the four-mode and console figures.
+- Preserved the execution, evaluation-loop and decision-record diagrams. Six current diagrams have editable SVG sources; that revision's brief used only the four-mode and console figures. The current homepage includes all six.
 - Completed independent source/audience research, skeptical-reader review and targeted architecture review. The three changed/new diagrams were visually inspected by the lead and both targeted reviewers. No material finding remains in that scope.
 
 ## Decisions to preserve
@@ -40,7 +54,7 @@ Published and verified in [15d4f13](https://github.com/appliedgenai/earned-auton
 
 The architecture rereview checked mode semantics, grant scope, promotion proof, console states, harness bindings and E16–E22. The reader rereview checked the six-minute narrative and all three changed/new figures. Both passed with the boundary that these are proposed designs, not demonstrated operating performance. Audience research uses public primary sources and makes no claim to know an executive's private priorities or likely response.
 
-Validation passed: sixty relative links/anchors, four JSON files, twenty-two unique evaluation scenario IDs, and nine retained SVG sources. The executive brief is 941 whitespace-separated words, with two figures. These checks validate document integrity; the scenarios remain unexecuted specifications. No editorial or publication blocker remains for this revision.
+Validation passed: sixty relative links/anchors, four JSON files, twenty-two unique evaluation scenario IDs, and nine retained SVG sources. That revision's executive brief had 941 whitespace-separated words, with two figures; the current homepage figures and count are recorded above. These checks validate document integrity; the scenarios remain unexecuted specifications. No editorial or publication blocker remains for this revision.
 
 ## Limits and next work
 
