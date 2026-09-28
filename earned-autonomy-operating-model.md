@@ -1,12 +1,16 @@
 # Earned Autonomy: an operating model for agents that act
 
-**A model release changes behavior. An approved grant changes what may execute.**
-
 *Mohit Mittal · September 2026*
 
-When a team cannot defend write access or demonstrate revocation, its agent remains a drafting tool. Give each business action a versioned grant, enforce it through a shared harness, and make operations responsible for unresolved effects. Judge success by correctly resolved work, total human effort and operating cost.
+An AI agent can investigate a service request, recommend a change or use tools to update a business system. Each activity carries different consequences. Access to read a customer record should not also permit changing it.
 
-Start with a bounded 90-day evaluation of one case type. The decision packet should show whether to expand, narrow or stop, which controls worked, what remains unresolved and who will operate the service. [Scope, resources and value sizing](reference-design.md#value-sizing)
+**Earned autonomy means granting permission for specific business actions, based on evidence, with a working way to restrict or withdraw it.** One agent can draft recommendations, update addresses after human approval and create eligible internal follow-ups within delegated limits. Permission varies by action and population.
+
+The operating model connects three responsibilities: owners decide permissions; a shared harness—the control software between the agent and its business tools—checks and enforces them; people and evaluation tools review actual outcomes. That evidence informs the owner's next permission decision. The objective is correctly resolved work with less total human effort and acceptable operating cost.
+
+The recorded permission is a **grant**. **A model release changes behavior. An approved grant changes what may execute.** Existing identity, approval and monitoring capabilities provide foundations. The integration work connects a versioned action grant to execution checks, review evidence, confirmed restrictions and recovery of uncertain outcomes.
+
+Use one workflow to evaluate the operating model before expanding it. A bounded 90-day evaluation can establish whether to expand, narrow or stop. [Scope, resources and value sizing](reference-design.md#value-sizing)
 
 > **What this is and isn't:** An independent reference architecture. Cases, identifiers, console states and grant-review outcomes are synthetic; design artifacts are unexecuted. A0–A3 are optional design vocabulary. Owners choose numerical acceptance limits before evaluation; shadow results cannot establish write or recovery safety. Sources provide context, not certification of the design. Product examples are candidates to evaluate; no employer deployment, measured benefit or customer fine-tuning capability is asserted.
 
@@ -22,11 +26,9 @@ In SC-42, investigation discovers a mailing-address mismatch. The domain owner m
 
 Price the whole investigation and resolution workflow. Internal follow-up creation is the first limited delegation to evaluate; it cannot justify the platform on ticket volume alone. Compare the additional A2-to-A3 benefit with the review removed and the audit, exception and queue work it adds. Keep the action approval-gated when that incremental benefit is absent.
 
-[AUTHOR: Add one anonymized example of a real delegation decision you owned: the workflow, the permission withheld or granted, your design choice and the observed result. Include only facts you can publish.]
-
 ## Authority is a contract for an action
 
-[![Four action-scoped autonomy modes, with distinct promotion evidence and a separate suspension control](diagrams/p2-autonomy-per-action.png)](diagrams/p2-autonomy-per-action.png)
+[![Permission decisions, enforcement and outcome review, with four modes for each action](diagrams/p2-autonomy-per-action.png)](diagrams/p2-autonomy-per-action.png)
 
 Treat an authority grant as a versioned record: **action, actor/delegation, scope, eligible cohort, environment, allowed mode, mandatory approvals, limits, expiry, validated system/configuration versions and accountable owner**. The registered capability describes what the agent can attempt; the grant describes what it may perform. Current policy and destination authorization can further restrict it.
 
@@ -105,8 +107,6 @@ This snapshot shows OP-42 after a timeout, before reconciliation. The later deci
 For each action/cohort, show the effective grant and configuration, owner, policy ceiling, evaluation window, sample coverage, material errors, human effort and exception backlog. Expose missing evidence instead of displaying an unexplained green trust score. Operators should be able to move from a metric to the reviewed cases and operation records that produced it.
 
 A promotion request records the proposed change, evidence and approvers. Restriction records have separate **requested**, **enforcement confirmed**, and **in-flight reconciled** states. Measure the delay between them. The console must not display “suspended” merely because it accepted a button click; an unacknowledged request needs a defined operational escalation.
-
-[AUTHOR: Add an anonymized operational lesson about revocation, a stop control or an uncertain write. State what you personally observed, who owned recovery and what changed. Omit this note if no publishable example exists.]
 
 Business owners authorize grant expansion with risk partners. Operations may restrict within preauthorized incident procedures. Restoration has its own approval path. These changes use authenticated, authorized and audited control APIs; the evaluating model cannot write the grant store or approve its own recommendations.
 

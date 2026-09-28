@@ -2,7 +2,7 @@
 
 Current Earned Autonomy diagrams use synthetic service case SC-42. All six appear directly in the [homepage reading path](../README.md), in the order below. Editable SVG sources accompany each PNG.
 
-- [Which actions may run without approval?](p2-autonomy-per-action.png)
+- [Who decides what an AI agent may do?](p2-autonomy-per-action.png)
 - [Where permission is enforced](p2-agent-harness.png)
 - [From proposal to verified result](p2-model-proposes-policy-decides.png)
 - [Is the restriction in force?](p2-agentic-console.png)

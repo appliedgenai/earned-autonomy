@@ -1,1 +1,73 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1120" viewBox="0 0 1400 1120" font-family="Segoe UI,Arial,sans-serif"><defs><marker id="teal" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#087B73"/></marker><marker id="blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#295FA7"/></marker><marker id="amber" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#98621B"/></marker><marker id="red" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#AC4836"/></marker></defs><rect x="1" y="1" width="1398" height="1118" fill="white" stroke="#D6E2EA" rx="18"/><text x="48" y="63" font-size="34" fill="#173047" font-weight="700">Which actions may run without approval?</text><text x="48" y="104" font-size="21" fill="#536B7C" font-weight="400">Permission is scoped to action, cohort, actor, environment and validated configuration.</text><rect x="48" y="146" width="1304" height="79" fill="#173047" stroke="none" rx="13"/><text x="72" y="193" font-size="25" fill="white" font-weight="600">A model release changes behavior. An approved grant changes what may execute.</text><rect x="48" y="276" width="284" height="240" fill="#EEF4FC" stroke="none" rx="13"/><text x="72" y="322" font-size="31" fill="#295FA7" font-weight="700">A0</text><text x="72" y="364" font-size="23" fill="#173047" font-weight="700">Shadow</text><text x="72" y="411" font-size="20" fill="#536B7C" font-weight="400">Authorized investigation</text><text x="72" y="444" font-size="20" fill="#536B7C" font-weight="400">Simulated proposals</text><text x="72" y="477" font-size="20" fill="#536B7C" font-weight="400">No business effects</text><path d="M337 387 H382" stroke="#087B73" stroke-width="3" fill="none" marker-end="url(#teal)"/><rect x="388" y="276" width="284" height="240" fill="#EEF4FC" stroke="none" rx="13"/><text x="412" y="322" font-size="31" fill="#295FA7" font-weight="700">A1</text><text x="412" y="364" font-size="23" fill="#173047" font-weight="700">Propose</text><text x="412" y="411" font-size="20" fill="#536B7C" font-weight="400">Actionable draft</text><text x="412" y="444" font-size="20" fill="#536B7C" font-weight="400">Human decides next step</text><text x="412" y="477" font-size="20" fill="#536B7C" font-weight="400">Agent execution disabled</text><path d="M677 387 H722" stroke="#087B73" stroke-width="3" fill="none" marker-end="url(#teal)"/><rect x="728" y="276" width="284" height="240" fill="#FCF3E2" stroke="none" rx="13"/><text x="752" y="322" font-size="31" fill="#295FA7" font-weight="700">A2</text><text x="752" y="364" font-size="23" fill="#173047" font-weight="700">Approved execution</text><text x="752" y="411" font-size="20" fill="#536B7C" font-weight="400">Exact approval each time</text><text x="752" y="444" font-size="20" fill="#536B7C" font-weight="400">Fresh dispatch checks</text><text x="752" y="477" font-size="20" fill="#536B7C" font-weight="400">Verify or reconcile effect</text><path d="M1017 387 H1062" stroke="#087B73" stroke-width="3" fill="none" marker-end="url(#teal)"/><rect x="1068" y="276" width="284" height="240" fill="#E7F5F0" stroke="none" rx="13"/><text x="1092" y="322" font-size="31" fill="#295FA7" font-weight="700">A3</text><text x="1092" y="364" font-size="23" fill="#173047" font-weight="700">Bounded execution</text><text x="1092" y="411" font-size="20" fill="#536B7C" font-weight="400">Delegate eligible actions</text><text x="1092" y="444" font-size="20" fill="#536B7C" font-weight="400">Enforce scope and limits</text><text x="1092" y="477" font-size="20" fill="#536B7C" font-weight="400">Retain policy ceilings</text><text x="48" y="570" font-size="17" fill="#087B73" font-weight="700">EVIDENCE FOR THE NEXT PERMISSION</text><rect x="48" y="595" width="412" height="160" fill="#EEF4FC" stroke="none" rx="13"/><text x="71" y="633" font-size="24" fill="#173047" font-weight="700">A0 → A1</text><text x="71" y="673" font-size="21" fill="#536B7C" font-weight="400">Useful, grounded proposals</text><text x="71" y="703" font-size="21" fill="#536B7C" font-weight="400">Appropriate escalation</text><text x="71" y="733" font-size="21" fill="#536B7C" font-weight="400">Approved data handling</text><rect x="494" y="595" width="412" height="160" fill="#EEF4FC" stroke="none" rx="13"/><text x="517" y="633" font-size="24" fill="#173047" font-weight="700">A1 → A2</text><text x="517" y="673" font-size="21" fill="#536B7C" font-weight="400">Qualified execution and recovery</text><text x="517" y="703" font-size="21" fill="#536B7C" font-weight="400">Exact approval and current rights</text><text x="517" y="733" font-size="21" fill="#536B7C" font-weight="400">Staffed exceptions</text><rect x="940" y="595" width="412" height="160" fill="#E7F5F0" stroke="none" rx="13"/><text x="963" y="633" font-size="24" fill="#173047" font-weight="700">A2 → A3</text><text x="963" y="673" font-size="21" fill="#536B7C" font-weight="400">Same-action outcome evidence</text><text x="963" y="703" font-size="21" fill="#536B7C" font-weight="400">Policy allows delegated execution</text><text x="963" y="733" font-size="21" fill="#536B7C" font-weight="400">Capacity and net benefit</text><rect x="48" y="794" width="1304" height="102" fill="#173047" stroke="none" rx="13"/><text x="73" y="831" font-size="16" fill="#BDD6E1" font-weight="700">SC-42: MIXED PERMISSIONS ARE EXPECTED</text><text x="73" y="870" font-size="24" fill="white" font-weight="600">Specialist follow-up: A2 → possible A3.   Account update: A2, with approval retained.</text><rect x="48" y="927" width="1304" height="97" fill="#FCEFEB" stroke="none" rx="13"/><text x="73" y="963" font-size="17" fill="#AC4836" font-weight="700">SUSPENSION IS A SEPARATE CONTROL STATE</text><text x="73" y="999" font-size="21" fill="#AC4836" font-weight="400">Restrict affected new dispatches; confirm enforcement; reconcile in-flight work before closing the incident.</text><path d="M48 1064 H1352" stroke="#D6E2EA"/><text x="48" y="1093" font-size="16" fill="#536B7C" font-weight="400">Earned Autonomy · Operating architecture</text><text x="1092" y="1093" font-size="16" fill="#536B7C" font-weight="400">Mohit Mittal · 2026</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1190" viewBox="0 0 1400 1190" font-family="Segoe UI,Arial,sans-serif">
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#087B73"/></marker></defs>
+<rect x="1" y="1" width="1398" height="1188" rx="18" fill="white" stroke="#D6E2EA"/>
+<text x="48" y="61" font-size="36" fill="#173047" font-weight="700" text-anchor="start">Who decides what an AI agent may do?</text>
+<text x="48" y="105" font-size="24" fill="#536B7C" font-weight="400" text-anchor="start">Owners set permission. Controls enforce it. Outcomes inform the next decision.</text>
+<rect x="48" y="155" width="350" height="425" rx="14" fill="#EEF4FC" stroke="none"/>
+<text x="72" y="200" font-size="26" fill="#173047" font-weight="700" text-anchor="start">1 · Decide permission</text>
+<text x="72" y="248" font-size="23" fill="#295FA7" font-weight="700" text-anchor="start">Business action owner</text>
+<text x="72" y="294" font-size="22" fill="#536B7C" font-weight="400" text-anchor="start">For each action and case</text>
+<text x="72" y="327" font-size="22" fill="#536B7C" font-weight="400" text-anchor="start">population, set the permitted</text>
+<text x="72" y="360" font-size="22" fill="#536B7C" font-weight="400" text-anchor="start">mode, scope and limits.</text>
+<rect x="72" y="404" width="302" height="138" rx="14" fill="white" stroke="none"/>
+<text x="91" y="437" font-size="17" fill="#295FA7" font-weight="700" text-anchor="start">GRANT</text>
+<text x="91" y="470" font-size="20" fill="#536B7C" font-weight="400" text-anchor="start">The versioned record</text>
+<text x="91" y="497" font-size="20" fill="#536B7C" font-weight="400" text-anchor="start">of standing permission.</text>
+<text x="91" y="524" font-size="20" fill="#536B7C" font-weight="400" text-anchor="start">Policy ceilings still apply.</text>
+<rect x="470" y="155" width="460" height="425" rx="14" fill="#F3F7F9" stroke="none"/>
+<text x="494" y="200" font-size="26" fill="#173047" font-weight="700" text-anchor="start">2 · Enforce before acting</text>
+<rect x="494" y="224" width="412" height="61" rx="14" fill="white" stroke="#D6E2EA"/>
+<text x="700" y="263" font-size="23" fill="#173047" font-weight="400" text-anchor="middle">AI agent proposes an action</text>
+<path d="M700 286 V317" fill="none" stroke="#087B73" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="494" y="322" width="412" height="120" rx="14" fill="#173047" stroke="none"/>
+<text x="700" y="356" font-size="22" fill="white" font-weight="700" text-anchor="middle">SHARED HARNESS</text>
+<text x="700" y="389" font-size="21" fill="white" font-weight="400" text-anchor="middle">Control software checks permission,</text>
+<text x="700" y="418" font-size="21" fill="white" font-weight="400" text-anchor="middle">exact approval if required, and state.</text>
+<path d="M700 443 V476" fill="none" stroke="#087B73" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="716" y="469" font-size="17" fill="#087B73" font-weight="400" text-anchor="start">if permitted</text>
+<rect x="494" y="481" width="412" height="61" rx="14" fill="white" stroke="#D6E2EA"/>
+<text x="700" y="520" font-size="23" fill="#173047" font-weight="400" text-anchor="middle">Business tool / system executes</text>
+<path d="M399 382 H485" fill="none" stroke="#087B73" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="435" y="355" font-size="18" fill="#087B73" font-weight="600" text-anchor="middle">grant</text>
+<rect x="1002" y="155" width="350" height="425" rx="14" fill="#E7F5F0" stroke="none"/>
+<text x="1026" y="200" font-size="26" fill="#173047" font-weight="700" text-anchor="start">3 · Review outcomes</text>
+<text x="1026" y="249" font-size="23" fill="#087B73" font-weight="700" text-anchor="start">People and evaluators</text>
+<text x="1026" y="281" font-size="23" fill="#087B73" font-weight="700" text-anchor="start">check what happened:</text>
+<text x="1026" y="335" font-size="21" fill="#536B7C" font-weight="400" text-anchor="start">• Correct results and errors</text>
+<text x="1026" y="371" font-size="21" fill="#536B7C" font-weight="400" text-anchor="start">• Unresolved effects</text>
+<text x="1026" y="407" font-size="21" fill="#536B7C" font-weight="400" text-anchor="start">• Review and recovery effort</text>
+<text x="1026" y="443" font-size="21" fill="#536B7C" font-weight="400" text-anchor="start">• Whether controls worked</text>
+<text x="1026" y="527" font-size="20" fill="#173047" font-weight="400" text-anchor="start">Evaluation informs authority;</text>
+<text x="1026" y="554" font-size="20" fill="#173047" font-weight="400" text-anchor="start">it cannot grant permission.</text>
+<path d="M907 510 H993" fill="none" stroke="#087B73" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="955" y="477" font-size="17" fill="#087B73" font-weight="600" text-anchor="middle">outcome</text>
+<path d="M1177 582 V626 H222 V582" fill="none" stroke="#087B73" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="430" y="608" width="540" height="38" rx="2" fill="white" stroke="none"/>
+<text x="700" y="634" font-size="22" fill="#087B73" font-weight="600" text-anchor="middle">Owner decides: keep, expand, restrict or restore</text>
+<text x="48" y="698" font-size="20" fill="#295FA7" font-weight="700" text-anchor="start">FOUR PERMISSION MODES FOR THE SAME ACTION AND POPULATION</text>
+<rect x="48" y="720" width="302" height="122" rx="14" fill="#EEF4FC" stroke="none"/>
+<text x="68" y="760" font-size="25" fill="#173047" font-weight="700" text-anchor="start">A0 · Shadow</text>
+<text x="68" y="797" font-size="21" fill="#536B7C" font-weight="400" text-anchor="start">Simulated proposals;</text>
+<text x="68" y="826" font-size="21" fill="#536B7C" font-weight="400" text-anchor="start">no business writes.</text>
+<rect x="382" y="720" width="302" height="122" rx="14" fill="#EEF4FC" stroke="none"/>
+<text x="402" y="760" font-size="25" fill="#173047" font-weight="700" text-anchor="start">A1 · Propose</text>
+<text x="402" y="797" font-size="21" fill="#536B7C" font-weight="400" text-anchor="start">Draft for human use;</text>
+<text x="402" y="826" font-size="21" fill="#536B7C" font-weight="400" text-anchor="start">agent does not execute.</text>
+<rect x="716" y="720" width="302" height="122" rx="14" fill="#FCF3E2" stroke="none"/>
+<text x="736" y="760" font-size="25" fill="#173047" font-weight="700" text-anchor="start">A2 · Approved</text>
+<text x="736" y="797" font-size="21" fill="#536B7C" font-weight="400" text-anchor="start">Execute the exact</text>
+<text x="736" y="826" font-size="21" fill="#536B7C" font-weight="400" text-anchor="start">approved proposal.</text>
+<rect x="1050" y="720" width="302" height="122" rx="14" fill="#E7F5F0" stroke="none"/>
+<text x="1070" y="760" font-size="25" fill="#173047" font-weight="700" text-anchor="start">A3 · Bounded</text>
+<text x="1070" y="797" font-size="21" fill="#536B7C" font-weight="400" text-anchor="start">Execute eligible actions</text>
+<text x="1070" y="826" font-size="21" fill="#536B7C" font-weight="400" text-anchor="start">within delegated limits.</text>
+<text x="48" y="875" font-size="22" fill="#536B7C" font-weight="400" text-anchor="start">Owners choose or change a mode using evidence; this is not an automatic ladder.</text>
+<rect x="48" y="908" width="1304" height="100" rx="14" fill="#173047" stroke="none"/>
+<text x="72" y="944" font-size="18" fill="#BDD6E1" font-weight="700" text-anchor="start">SC-42 · ONE AGENT, TWO DIFFERENT PERMISSION DECISIONS</text>
+<text x="72" y="982" font-size="23" fill="white" font-weight="400" text-anchor="start">Address update: A2 approval retained.   Follow-up: A2 today; A3 requires evidence and authorization.</text>
+<rect x="48" y="1028" width="1304" height="91" rx="14" fill="#FCEFEB" stroke="none"/>
+<text x="72" y="1064" font-size="18" fill="#AC4836" font-weight="700" text-anchor="start">RESTRICTION HAS TO WORK</text>
+<text x="72" y="1097" font-size="21" fill="#AC4836" font-weight="400" text-anchor="start">Block affected new actions, confirm enforcement and reconcile in-flight work. Suspension is separate from A0–A3.</text>
+<text x="48" y="1160" font-size="16" fill="#536B7C" font-weight="400" text-anchor="start">Earned Autonomy · Operating architecture</text>
+<text x="1352" y="1160" font-size="16" fill="#536B7C" font-weight="400" text-anchor="end">Mohit Mittal · 2026</text>
+</svg>
