@@ -83,21 +83,44 @@ Before a supervised pilot, require no unauthorized writes or duplicate effects i
 
 ### Semantic evaluation and grant changes
 
-The four modes and [worked grant review](earned-autonomy-operating-model.md#one-action-through-the-four-modes) apply to a specific action/cohort. [The agent profile](examples/agent-profile.json) binds this servicing investigator to the shared harness. [The authority-review example](examples/authority-review.json) records why a proposed A3 grant remains at A2. The console records requested restrictions separately from runtime confirmation and in-flight reconciliation.
+The four modes and [worked grant review](earned-autonomy-operating-model.md#one-action-through-the-four-modes) apply to a specific action/cohort. [The agent profile](examples/agent-profile.json) binds this servicing investigator to the shared harness. [The authority-review example](examples/authority-review.json) records why a proposed A3 grant remains at A2. The console records requested restrictions separately from shared-harness confirmation and in-flight reconciliation. The illustrated temporary hold covers new address updates for SC-42 only; other cases retain their existing grants.
 
-For the resolution package, use a rubric covering source support, omitted contradictions, unresolved facts and the appropriateness of escalation. Jev or an LLM judge is a candidate evaluator, calibrated against independently adjudicated domain cases. Permission, payload, date and final-state checks remain deterministic. Required evaluator failure takes the action's defined hold/review path; a high score never grants write permission.
+For the resolution package, use a rubric covering source support, omitted contradictions, unresolved facts and the appropriateness of escalation. An LLM judge or structured decision model is a candidate evaluator, calibrated against independently adjudicated domain cases. Permission, payload, date and final-state checks remain deterministic. Required evaluator failure takes the action's defined hold/review path; a high score never grants write permission.
 
 The separate `create_internal_case` action creates a linked internal specialist follow-up for SC-42 and starts approval-required. Restrict it to draft-only or expand it to bounded execution only through an owner-approved, versioned grant for the same action and cohort, subject to predefined emergency restriction controls. SC-42's account update remains approval-required. Improvements to sources, prompts, tools or models have their own evaluation and rollout decision. See the [full evaluation and authority loop](earned-autonomy-operating-model.md#two-feedback-loops-two-decisions).
 
+### Value sizing
+
+Size the whole investigation/resolution workflow, then evaluate the incremental value of promoting follow-up creation from A2 to A3. Use comparable case populations and mature outcome windows. Keep address updates approval-gated in this evaluation.
+
+**Monthly gross capacity value = N × m × r ÷ 60 × H.**
+
+**Monthly net capacity value = gross capacity value − R − E − P − G.**
+
+| Input | Meaning | Value to supply |
+|---|---|---|
+| N | Eligible cases/month, using fixed eligibility rules. | [ILLUSTRATIVE — replace with real data: eligible monthly volume] |
+| m | Baseline handling minutes/case for the work expected to be removed. | [ILLUSTRATIVE — replace with real data: handling minutes] |
+| r | Expected gross reduction, as a fraction; replace with observed results after evaluation. | [ILLUSTRATIVE — replace with real data: reduction assumption] |
+| H | Loaded cost in dollars/hour for the affected work. | [ILLUSTRATIVE — replace with real data: hourly cost] |
+| R | Incremental review cost, dollars/month. | [ILLUSTRATIVE — replace with real data: review cost] |
+| E | Incremental exception/recovery/rework cost, dollars/month. | [ILLUSTRATIVE — replace with real data: exception cost] |
+| P | Incremental model, evaluator, runtime and platform cost, dollars/month. | [ILLUSTRATIVE — replace with real data: platform cost] |
+| G | Incremental governance-program cost, dollars/month. | [ILLUSTRATIVE — replace with real data: governance cost] |
+
+Count each item once. If r already measures net handling reduction including review and recovery, exclude those included items from R/E. Preserve unsuccessful and abandoned attempts in cohort costs; disclose pending outcomes. Implementation cost and the 90-day budget are separate one-time investment inputs. Report both observed hours released and their monetary valuation; a cash-savings claim additionally needs an actual spending reduction.
+
+For the A2-to-A3 decision, compare approval effort removed with added audit, exception and queue effort for the same follow-up cohort. Do not credit that promotion with investigation benefits already present under A2. Select a different action if the incremental benefit cannot cover its control and operating burden.
+
 ### A staged first 90 days
 
-This is a sequencing proposal. Advancement depends on evidence, not the calendar.
+The operations sponsor owns the outcome. A platform lead owns execution and recovery; domain reviewers define correct results; evaluation and risk partners set entry criteria. Staff allocation and budget cap: [ILLUSTRATIVE — replace with real data: roles, allocation and 90-day investment]. Advance only when entry criteria pass.
 
 | Window | Deliverable | Decision at the end |
 |---|---|---|
 | Days 1–30 | Baseline human effort; inventory permissions and API behavior; define action contract and failure tests. | Is this workflow suitable, and are the destination guarantees sufficient? |
 | Days 31–60 | Shadow proposals; reviewer experience; deterministic execution in an isolated environment; reconciliation and stop drills. | Are quality, control coverage and operational ownership good enough for supervised use? |
-| Days 61–90 | Small approved cohort with human approval and staffed exceptions; matched comparison of end-to-end effort and quality. | Expand, narrow or stop based on observed outcomes and agreed risk thresholds. |
+| Days 61–90 | Small approved cohort with human approval and staffed exceptions; matched comparison of end-to-end effort and quality. | Deliver observed economics, control-test results, gaps, an operating owner and an expand/narrow/stop recommendation. |
 
 Agree thresholds with the business, operations and risk owners before looking at pilot results. Keep the baseline definition, failure denominator and selection criteria fixed enough for a meaningful comparison.
 

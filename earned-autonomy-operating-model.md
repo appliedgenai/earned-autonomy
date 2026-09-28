@@ -1,22 +1,28 @@
 # Earned Autonomy: an operating model for agents that act
 
-### A shared harness, four autonomy modes and an operating console for evidence-based delegation
+**A model release changes behavior. An approved grant changes what may execute.**
 
 *Mohit Mittal · September 2026*
 
-**Treat each action's authority as a versioned, revocable operating decision, separate from the agent or model release.** A shared harness enforces that authority; an agentic console connects observed outcomes to accountable decisions to retain, expand, restrict or suspend it. The business objective is more correctly resolved work with less total human effort.
+When a team cannot defend write access or demonstrate revocation, its agent remains a drafting tool. Give each business action a versioned grant, enforce it through a shared harness, and make operations responsible for unresolved effects. Judge success by correctly resolved work, total human effort and operating cost.
 
-[Six-minute visual brief](README.md) · [Detailed reference design](reference-design.md)
+Start with a bounded 90-day evaluation of one case type. The decision packet should show whether to expand, narrow or stop, which controls worked, what remains unresolved and who will operate the service. [Scope, resources and value sizing](reference-design.md#value-sizing)
+
+> **What this is and isn't:** An independent reference architecture. Cases, identifiers, console states and grant-review outcomes are synthetic; design artifacts are unexecuted. A0–A3 are optional design vocabulary. Owners choose numerical acceptance limits before evaluation; shadow results cannot establish write or recovery safety. Sources provide context, not certification of the design. Product examples are candidates to evaluate; no employer deployment, measured benefit or customer fine-tuning capability is asserted.
+
+[Six-minute visual brief](README.md) · [Reference design](reference-design.md)
 
 ## First establish why an agent belongs
 
 An advisor asks: **“Why is service case SC-42 still open, and what can we safely do next?”** The relevant evidence is spread across a request, servicing history, account status, documents and current rules. The next useful step depends on what the investigation discovers. A missing document, contradictory record and ambiguous policy call for different paths.
 
-This is a plausible agent task: bounded investigation that selects among permitted sources and tools, identifies gaps, and proposes a resolution. The output is a package containing facts, source references, unresolved questions, proposed actions and the owner of any exception. A fixed checklist plus targeted extraction may still be sufficient; compare quality, elapsed time, human effort and cost before choosing an agent. [Workflow/agent distinction](https://www.anthropic.com/engineering/building-effective-agents)
+Use an agent for bounded investigation that selects among permitted sources and tools, identifies gaps, and proposes a resolution. The output is a package containing facts, source references, unresolved questions, proposed actions and the owner of any exception. A fixed checklist plus targeted extraction may still be sufficient; compare quality, elapsed time, human effort and cost before choosing an agent. [Workflow/agent distinction](https://www.anthropic.com/engineering/building-effective-agents)
 
-In our synthetic case, investigation discovers a possible mailing-address mismatch. That finding does not authorize an update. The agent must distinguish an observed inconsistency from verified intent to change the record. Existing identity, fraud and servicing controls still apply.
+In SC-42, investigation discovers a mailing-address mismatch. The domain owner must verify the client’s intent before any update. Unauthorized address changes can signal account takeover; address updates therefore retain verification and approval in this design. Existing identity, fraud and servicing controls apply. [FINRA account-takeover guidance](https://www.finra.org/investors/insights/customer-account-takeovers)
 
-Compliance is a constraint and an operating responsibility, not the sole reason to build an agent. [FINRA's 2026 discussion](https://www.finra.org/rules-guidance/guidance/reports/2026-finra-annual-regulatory-oversight-report/gen-ai) addresses supervision, monitoring and agent risks involving authority, auditability and sensitive data. This paper proposes engineering responses; it does not claim a regulator-prescribed design or compliance certification.
+Price the whole investigation and resolution workflow. Internal follow-up creation is the first limited delegation to evaluate; it cannot justify the platform on ticket volume alone. Compare the additional A2-to-A3 benefit with the review removed and the audit, exception and queue work it adds. Keep the action approval-gated when that incremental benefit is absent.
+
+[AUTHOR: Add one anonymized example of a real delegation decision you owned: the workflow, the permission withheld or granted, your design choice and the observed result. Include only facts you can publish.]
 
 ## Authority is a contract for an action
 
@@ -32,7 +38,7 @@ The user interface should state which action will happen, under whose authority,
 
 ## One action through the four modes
 
-These modes describe **an action for a defined cohort under a particular grant**. A console may summarize an agent's activity, but one global agent level would conceal mixed permissions. The progression is optional; entering a mode requires its evidence, not time spent on a ladder.
+These modes describe **an action for a defined cohort under a particular grant**. A console may summarize an agent's activity, but one global agent level would conceal mixed permissions.
 
 | Mode | What the system may do | Evidence needed before entering |
 |---|---|---|
@@ -41,11 +47,11 @@ These modes describe **an action for a defined cohort under a particular grant**
 | **A2 · Approved execution** | Dispatch the exact approved proposal after fresh checks. | Tested action contract, approval binding, destination authorization, duplicate/concurrency controls, reconciliation and staffed exceptions. |
 | **A3 · Bounded execution** | Execute eligible actions without per-instance discretionary review, within the owner's grant. | Same-action/cohort outcome evidence, applicable judge calibration, tested restriction/recovery, operational capacity and net benefit; policy must permit delegation. |
 
-A0/A1 results can support judgment quality; they cannot establish the safety of actual writes. A1 may still allow a human to perform work through a separate authorized system; it does not create permission for the agent's executor. Mandatory per-action approval prevents A3 for that action. Suspension is a separate dispatch-control state and can apply regardless of the previous mode.
+A1 may still allow a human to perform work through a separate authorized system; it does not create permission for the agent's executor. Mandatory per-action approval prevents A3 for that action. Suspension is a separate dispatch-control state and can apply regardless of the previous mode.
 
-### A hypothetical grant review for SC-42
+### A grant review for SC-42
 
-Consider `create_internal_case`, which creates a linked specialist follow-up. Keep the cohort fixed: eligible servicing cases with verified account/parent linkage and an approved follow-up type and destination queue. This is a worked decision design; the observations below are hypothetical, not reported pilot results.
+Consider `create_internal_case`, which creates a linked specialist follow-up. Keep the cohort fixed: eligible servicing cases with verified account/parent linkage and an approved follow-up type and destination queue. The decision sequence below follows that same action and cohort.
 
 | Review point | Evidence and decision | What the runtime permits |
 |---|---|---|
@@ -55,39 +61,54 @@ Consider `create_internal_case`, which creates a linked specialist follow-up. Ke
 | Delegate a narrow action | Independently reviewed outcomes meet criteria agreed in advance; queue capacity and total effort justify delegation. The action owner approves grant revision CF-42@v2. | A3 only for the eligible cohort, approved queues/fields and volume limits, until expiry; the address action stays A2. |
 | Contain and restore | A confirmed effect on an out-of-scope parent case triggers the predefined severe-event rule. Block affected new dispatches and reconcile in-flight work. After repair, relevant tests, observation and owner review, restoration may begin at A2. | Suspension is enforced outside the model. Restoring A2 does not silently restore A3 or erase the incident. |
 
-The review packet binds the grant request to an evaluation window and matured cohort, actual system/tool/model/rubric versions, sample selection, severity-specific error counts, unresolved operations, reviewer effort and downstream rework. Fix minimum evidence, acceptance limits, queue capacity and restriction/restoration rules before examining results. This paper supplies no universal numeric promotion threshold.
+The review packet binds the grant request to an evaluation window and matured cohort, actual system/tool/model/rubric versions, sample selection, severity-specific error counts, unresolved operations, reviewer effort and downstream rework. Fix minimum evidence, acceptance limits, queue capacity and restriction/restoration rules before examining results.
 
 The A3 grant limits the parent/account relationship, follow-up type, permitted fields, destination queue and volume. An existing follow-up for the same parent and type is reconciled or escalated rather than recreated; duplicate prevention must be enforced by the destination's supported operation/uniqueness contract. Creating a correctly routed case is action success. Resolving the original servicing problem remains a separate outcome.
 
 [Illustrative authority review record](examples/authority-review.json)
 
-## Bind every agent to a supported harness
+## Bind every agent to the shared harness
 
-A shared harness supplies a repeatable operating boundary. Each registered agent receives a **versioned configuration**, rather than a separate copy of the platform. The configuration binds identity/delegation, allowed context and tools, budgets, grant references, required evaluations, evidence and exception routing.
+The **shared harness** is the common control boundary that checks permissions, dispatches actions and records outcomes. Each registered agent receives a **versioned configuration**, backed by common platform services. The configuration binds identity/delegation, allowed context and tools, budgets, grant references, required evaluations, evidence and exception routing.
 
-[![Each registered agent binds to a shared enforced runtime, with evidence, evaluation and accountable console decisions outside the model](diagrams/p2-agent-harness.png)](diagrams/p2-agent-harness.png)
+[![Each registered agent binds to the shared harness, with evidence, evaluation and accountable console decisions outside the model](diagrams/p2-agent-harness.png)](diagrams/p2-agent-harness.png)
 
-For the servicing investigator, registration links an accountable owner and validated runtime configuration to source-access rules, read tools and the two action contracts. Tool availability does not imply permission to execute. The harness resolves current grants at dispatch; a cached startup decision cannot establish that permission is still valid.
+For the servicing investigator, registration links an accountable owner and validated runtime configuration to source-access rules, read tools and the two action contracts. Tool availability does not imply permission to execute. The shared harness resolves current grants at dispatch; a cached startup decision cannot establish that permission is still valid.
 
 An approved implementation must demonstrate request identity propagation, scoped tool/credential access, required-check failure behavior, durable operation identity, cancellation/reconciliation, and export of usable evidence. An external agent or provider that cannot support a required boundary stays outside that execution mode. A wrapper or a prompt cannot manufacture missing enforcement guarantees.
 
-Shared platform services provide identity integration, grant evaluation, durable execution, evidence correlation and evaluation plumbing. Domain teams own eligible cohorts, meaning of correct completion, escalation labels and recovery. The second workflow supplies its own action contract, tests and recovery adapter while reusing those services.
+Shared-harness services provide identity integration, grant evaluation, durable execution, evidence correlation and evaluation plumbing. Domain teams own eligible cohorts, meaning of correct completion, escalation labels and recovery. The second workflow supplies its own action contract, tests and recovery adapter while reusing those services.
 
 [Illustrative per-agent registration profile](examples/agent-profile.json)
 
+## What to buy, and what the firm must decide
+
+Identity integration, scoped tools, approval workflows and tracing are candidates for reuse or purchase. Evaluate the assembled implementation against four operating contracts:
+
+| Contract | Acceptance exercise | Accountable owner |
+|---|---|---|
+| Versioned action grants independent of model releases | Change the model configuration; verify the grant stays bounded and dispatch checks the validated configuration. | Action owner and platform lead. |
+| Promotion evidence packet | Reconstruct population, sample selection, outcomes, errors, effort and the decision for the requested action/cohort. | Business owner and evaluation lead. |
+| Restriction acknowledgment | Request a restriction, verify the enforcement point blocks affected new dispatches, and measure the delay. | Operations and platform on-call. |
+| Owned reconciliation | Inject a timeout after a possible write; resolve the operation without an accidental duplicate. | Service owner and recovery team. |
+
+Buy an implementation when it meets these contracts. Build adapters only for demonstrated integration gaps. The firm supplies domain meaning, evidence requirements, incident authority and recovery acceptance in either choice. Compare licensing, integration, evaluation, human review, on-call support and exit costs. A supplier demonstration becomes useful when the team can repeat these exercises against its own destination systems.
+
 ## Use an agentic console to operate those decisions
 
-The console combines **agent inventory, action-level authority, observed outcomes and accountable change requests**. It is an operational interface to the underlying controls; runtime and destination services enforce the decision.
+The console lets operators see registered agents, inspect each action’s current grant, examine outcomes and request changes. It is an operational interface to the underlying controls; runtime and destination services enforce the decision.
 
 [![Reference console separates requested promotion, current grants, restriction acknowledgments and unresolved operations](diagrams/p2-agentic-console.png)](diagrams/p2-agentic-console.png)
 
-This synthetic snapshot shows OP-42 after a timeout, before reconciliation. The reference design's later decision record shows its verified outcome; the console must preserve the unknown state until that evidence arrives.
+This snapshot shows OP-42 after a timeout, before reconciliation. The later decision record shows its verified outcome. In the console, operations requests a hold on **new address-update dispatches for SC-42 only**. The A2 grant for other eligible cases remains unchanged. Acknowledgment is pending; OP-42 stays unknown until reconciliation establishes its outcome.
 
 For each action/cohort, show the effective grant and configuration, owner, policy ceiling, evaluation window, sample coverage, material errors, human effort and exception backlog. Expose missing evidence instead of displaying an unexplained green trust score. Operators should be able to move from a metric to the reviewed cases and operation records that produced it.
 
 A promotion request records the proposed change, evidence and approvers. Restriction records have separate **requested**, **enforcement confirmed**, and **in-flight reconciled** states. Measure the delay between them. The console must not display “suspended” merely because it accepted a button click; an unacknowledged request needs a defined operational escalation.
 
-Business owners authorize grant expansion with applicable risk partners. Operations may restrict within preauthorized incident procedures. Restoration has its own approval path. These changes use authenticated, authorized and audited control APIs; the evaluating model cannot write the grant store or approve its own recommendations.
+[AUTHOR: Add an anonymized operational lesson about revocation, a stop control or an uncertain write. State what you personally observed, who owned recovery and what changed. Omit this note if no publishable example exists.]
+
+Business owners authorize grant expansion with risk partners. Operations may restrict within preauthorized incident procedures. Restoration has its own approval path. These changes use authenticated, authorized and audited control APIs; the evaluating model cannot write the grant store or approve its own recommendations.
 
 ## Separate model judgment from the execution boundary
 
@@ -119,24 +140,18 @@ MCP is a connectivity and protocol authorization mechanism, not the firm's actio
 | Evaluator | Suitable questions | Evidence and limits |
 |---|---|---|
 | Deterministic checks | Are rights current? Is the payload exact? Did the expected state change occur without a duplicate effect? | Policy decisions, contracts, state queries and assertions. These checks cover what has actually been encoded and observed. |
-| Semantic judge: LLM or Jev | Does the resolution follow the supplied evidence? Are important contradictions or gaps omitted? | A versioned rubric, relevant evidence and a verdict with uncertainty. The result is fallible, not an authorization token. |
+| Semantic judge: LLM or structured decision model | Does the resolution follow the supplied evidence? Are important contradictions or gaps omitted? | A versioned rubric, relevant evidence and a verdict with uncertainty. Measure unsafe passes and false rejections; authorization stays with policy controls. |
 | Domain reviewer | Is the proposed next step appropriate in this case? Is the rubric missing an important exception? | Adjudicated reference cases, disagreement review and sampling of accepted work. Human review also needs quality controls. |
 
-Combining code, model and human evaluation is consistent with [Anthropic's agent-evaluation guidance](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents). This design evaluates the model, harness, sources, tools and controls together; a benchmark of the model alone is insufficient.
+Combining code, model and human evaluation is consistent with [Anthropic's agent-evaluation guidance](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents). Evaluate the model, shared harness, sources, tools and controls together.
 
-### Where Jev fits
+### Structured decision models alongside LLM judges
 
-TypeSafe's **Jev** returns typed choices, scores and probabilities rather than generated explanations. It is a candidate for frequent, narrow semantic checks. Its calibration across predictions does not guarantee an individual verdict. [System One documentation](https://docs.typesafe.ai/concepts/system-one)
+An LLM judge can assess evidence against a rubric and supply a rationale for review. A structured decision model is another option for narrow classifications. TypeSafe’s **Jev**, introduced in September 2026, returns typed choices, scores and probabilities rather than generated explanations. [Launch](https://typesafe.ai/blog/introducing-system-one-models-and-jev) · [Documentation](https://docs.typesafe.ai/concepts/system-one)
 
-For SC-42, ask a focused question such as: *“Is the proposed correction supported, contradicted, or unresolved by these supplied records?”* Provide explicit criteria for each answer, authoritative references and relevant excerpts. Preserve an `insufficient_evidence` route where appropriate. A binary yes-probability alone does not supply an abstention category.
+For either approach, ask a focused question: “Do these records support, contradict or leave unresolved the proposed correction?” Supply criteria and source excerpts. Preserve an explicit insufficient-evidence route. Validate error rates, calibration, latency and review burden on independently labeled domain cases. Correlated judges can share the same blind spots; adding judges requires evidence that it improves the decision.
 
-Compare Jev with a conventional LLM judge on independently labeled cases. A generative judge can produce an explanation to help review, but that explanation is also an output to assess. Do not run multiple judges merely to manufacture consensus. Shared inputs, rubrics and training patterns can produce correlated errors.
-
-Keep exact numeric/date comparisons and invariants in code. TypeSafe documents limitations with those tasks, indirect reasoning, irrelevant context and adversarial content. Test attacks aimed at the evaluator as well as the acting agent. [Jev 1.13 limitations](https://docs.typesafe.ai/model-jaggedness/jev-1.13)
-
-Pin the judge version, question type, rubric, input manifest and routing threshold. Choice/Score confidence and Noul probabilities have different semantics; validate thresholds for the actual question and population. [Confidence documentation](https://docs.typesafe.ai/confidence)
-
-[MLflow's comparison](https://www.mlflow.org/blog/jev-llm-judge/) provides a useful implementation example using 30 technical-QA cases. It does not establish performance on regulated servicing decisions. Choose a judge on domain error rates, calibration, review burden, latency and total cost—not vendor-wide accuracy claims.
+Pin the evaluator version, question type, rubric, input manifest and routing threshold. Keep exact numeric/date comparisons and invariants in code. Test adversarial content against both the agent and evaluator. Jev’s documented task limitations and question-specific confidence semantics belong in that qualification. [Limitations](https://docs.typesafe.ai/model-jaggedness/jev-1.13) · [Confidence](https://docs.typesafe.ai/confidence)
 
 ### Evaluation before deployment and during operation
 
@@ -152,7 +167,7 @@ Review accepted cases as well as escalations. Record sampling probabilities and 
 
 **The improvement loop changes behavior.** Investigate the cause before selecting the remedy. Incorrect source material needs correction; poor retrieval needs better selection; ambiguous instructions need clarification; a retry defect needs an execution fix. Consider another model or offline training for persistent behavior gaps supported by suitable, reviewed data. Keep current policy in authoritative sources and enforceable rules; weights are not a reliable store of changing permissions.
 
-Training requires approved data use, curation/redaction, labels with provenance, separate training and held-out sets, a versioned candidate, regression evaluation and a rollout/rollback decision. Raw traces, user corrections and judge verdicts are inputs for adjudication, not automatically training truth. This proposal does not assume Jev offers customer fine-tuning. Evaluate the whole system after a model change and review any authority grant whose evidence it invalidates.
+Training requires approved data use, curation/redaction, labels with provenance, separate training and held-out sets, a versioned candidate, regression evaluation and a rollout/rollback decision. Raw traces, user corrections and judge verdicts are inputs for adjudication, not automatically training truth. Evaluate the whole system after a model change and review any authority grant whose evidence it invalidates.
 
 **The authority loop changes permission.** The business action owner reviews outcome quality, control coverage, residual risk, operational capacity and benefit with applicable risk/security partners. The result is a versioned grant to retain, expand, restrict or suspend an action for a defined cohort. A run can select a more cautious path inside that grant; it cannot widen the grant itself.
 
@@ -169,7 +184,7 @@ Agree criteria before looking at pilot outcomes. Separate restriction and restor
 
 Correlate **case → action/proposal → authority grant → policy/approval → operation → verified outcome → evaluation/review**. Record model/tool/rubric versions and concise evidence-backed decision factors; hidden reasoning is unnecessary. Keep sensitive payloads in an access-controlled evidence store with appropriate retention, legal-hold and deletion processes. An append-only table alone is not tamper-proof evidence.
 
-Report metrics by action, risk cohort, environment and system/judge/policy version. Use a defined observation window and outcome-maturity rule; show samples, pending work and severity. The following measures are proposed for this design.
+Report metrics by action, risk cohort, environment and system/judge/policy version. Use a defined observation window and outcome-maturity rule; show samples, pending work and severity. Use the following measures to decide whether to change the grant or repair the system.
 
 | Measure | Definition | What it changes |
 |---|---|---|
@@ -190,16 +205,28 @@ Sampled judgments estimate quality with uncertainty; do not represent them as co
 
 Total cost per correctly resolved case includes the model, judges, platform and human work across the whole cohort, including unsuccessful attempts. Compare comparable case mixes and mature outcome windows against the prior workflow. Faster investigation is valuable only if review and reconciliation do not consume the gain.
 
+## Fit authority decisions into existing governance
+
+Map these decisions into the firm’s existing governance; owners confirm the routing and required evidence. [FINRA’s 2026 GenAI discussion](https://www.finra.org/rules-guidance/guidance/reports/2026-finra-annual-regulatory-oversight-report/gen-ai) addresses supervision, governance, model-risk practice, testing and monitoring.
+
+| Decision | Proposed process connection | Record to retain |
+|---|---|---|
+| Change an action grant | Change management and supervisory procedures; action owner authorizes scope. | Before/after grant, reason, approver, validated configuration and effective time. |
+| Promote to a broader grant | Business review and model-risk practice where the firm classifies it as applicable. | Cohort, evidence window, sampling, outcomes, errors, effort and residual risks. |
+| Suspend or restrict | Incident/supervisory procedures with preauthorized containment rights. | Requested scope, confirmed enforcement, in-flight operations and recovery owner. |
+| Restore permission | Repair review, change authorization and owned rollout. | Root cause, regressions, operating observations and exact restored grant. |
+| Reconstruct an action | Audit and recordkeeping processes, with source-system access and retention rules. | Proposal, approval, grant, dispatch, receipt, verification and exception history. |
+
 ## Make the operating model executable by people
 
-The business owner defines eligible work and grants; operations/domain experts define outcomes and adjudicate exceptions; engineering owns execution and recovery; the evaluation owner maintains cases and judge quality; security/risk partners establish applicable constraints; platform owners maintain identity, connectors and evidence services. These are responsibilities, not necessarily new teams.
+The business owner defines eligible work and grants; operations/domain experts define outcomes and adjudicate exceptions; engineering owns execution and recovery; the evaluation owner maintains cases and judge quality; security/risk partners establish applicable constraints; platform owners maintain identity, connectors and evidence services. Assign these responsibilities within existing teams wherever practical.
 
 Begin with one case class in shadow or supervised mode and a staffed exception path. Rehearse denial, unknown outcomes and stop/recovery before increasing exposure. The second use case should reuse action contracts and evidence interfaces without copying a bespoke harness.
 
-The investment is a resolution capability with an accountable operating loop. **Earned autonomy means permission supported by evidence—and a working mechanism to take it back.**
+**Earned autonomy means permission supported by evidence—and a working mechanism to take it back.**
 
 ---
 
-**Author perspective:** My work includes enterprise architecture, production LLM/RAG systems at Chegg, and governed agent infrastructure and MCP servers in healthcare. SC-42, the product placements and the evaluation artifacts are independent design proposals; no financial-services deployment, benchmark or savings result is claimed.
+**Author:** Mohit Mittal, Chief Architect, with 22+ years in enterprise architecture and distributed systems, including production LLM/RAG at Chegg and governed agent infrastructure and MCP servers in healthcare.
 
 [Reference design and evidence record](reference-design.md) · [Sources](SOURCES.md) · [Separate AI-DLC architecture](https://github.com/appliedgenai/intent-to-production)

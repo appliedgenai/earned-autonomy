@@ -10,6 +10,12 @@ Reviewed 28 September 2026. Links below support external context; the architectu
 
 The portfolio does not claim legal compliance, measured production savings, an implemented policy engine, or validated performance of the sample design. Author experience is based on the author's supplied professional background. No client records, employer source code or internal architecture documents are included.
 
+## Address-change risk and governance
+
+- [FINRA: Customer Account Takeovers](https://www.finra.org/investors/insights/customer-account-takeovers): unauthorized address changes are a warning sign. This supports treating the address-update example cautiously; it does not establish frequency or prescribe its approval control.
+- [FINRA 2026 GenAI discussion](https://www.finra.org/rules-guidance/guidance/reports/2026-finra-annual-regulatory-oversight-report/gen-ai): governance, supervision, model-risk practice, testing and monitoring inform the proposed mapping to existing processes. The firm confirms the mapping.
+- [TypeSafe Jev introduction](https://typesafe.ai/blog/introducing-system-one-models-and-jev): September 2026 introduction. The paper avoids an access-status claim because availability changes.
+
 ## Runtime architecture research
 
 - [TypeSafe System One](https://docs.typesafe.ai/concepts/system-one): Jev's typed decisions and probabilities, without generated explanations. Calibration does not guarantee individual semantic correctness.
