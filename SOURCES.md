@@ -4,9 +4,6 @@ Reviewed 28 September 2026. Links below support external context; the architectu
 
 | Source | Used for | Boundary |
 |---|---|---|
-| [DORA: Balancing AI tensions](https://dora.dev/insights/balancing-ai-tensions/) | Association between adoption, throughput and instability. | Observational research; not a prediction of any firm's return. |
-| [METR early-2025 study](https://arxiv.org/abs/2507.09089) | A bounded randomized developer-productivity result. | Specific developers, repositories and tools; not a general claim about current tools. |
-| [METR February 2026 update](https://metr.org/blog/2026-02-24-uplift-update/) | Limitations affecting newer productivity measurements. | Avoid extrapolating the earlier slowdown into 2026. |
 | [FINRA 2026 GenAI report section](https://www.finra.org/rules-guidance/guidance/reports/2026-finra-annual-regulatory-oversight-report/gen-ai) | Agent risks concerning authority, auditability and data. | Report discussion is not a prescription for this architecture or a new universal logging requirement. |
 | [MCP authorization, 2025-11-25](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization) | Protocol-level authorization for protected HTTP MCP services. | Business entitlements and transaction approvals require additional implementation. |
 | [MCP security guidance](https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices) | Audience validation and prohibition of token passthrough. | Does not establish end-to-end compliance or remove destination authorization duties. |
@@ -15,21 +12,16 @@ The portfolio does not claim legal compliance, measured production savings, an i
 
 ## Runtime architecture research
 
+- [TypeSafe System One](https://docs.typesafe.ai/concepts/system-one): Jev's typed decisions and probabilities, without generated explanations. Calibration does not guarantee individual semantic correctness.
+- [Jev 1.13 limitations](https://docs.typesafe.ai/model-jaggedness/jev-1.13) and [confidence semantics](https://docs.typesafe.ai/confidence): task limitations and question-type-specific output interpretation. Validate the actual rubric and domain; exact invariants remain code checks.
+- [MLflow's Jev judge comparison](https://www.mlflow.org/blog/jev-llm-judge/): a 30-case technical-QA comparison and implementation example, not validation for regulated servicing.
+- [Anthropic: Demystifying evals for AI agents](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents): code, model and human evaluation, with trajectory and outcome evidence.
 - [Anthropic: Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents): workflow/agent distinctions inform the separation of reasoning flexibility from execution authority.
 - [AWS Builders' Library: safe retries](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/): operation identity and API semantics inform retry and reconciliation design. Adapters cannot create destination guarantees.
 - [NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework): voluntary governance context, not certification of this design.
 
-The current six-layer delivery architecture is in its [dedicated repository](https://github.com/appliedgenai/intent-to-production). Earlier delivery essays retained here are background material; this repository's entry point concerns runtime business-action authority.
+## Separate AI-DLC paper
 
-## AI-DLC companion
+The current delivery architecture and its sources are maintained in [Intent to Production](https://github.com/appliedgenai/intent-to-production) and its [source inventory](https://github.com/appliedgenai/intent-to-production/blob/main/SOURCES.md). Superseded delivery article paths in this repository point there and preserve links to their earlier versions in Git history.
 
-The [article](03-intent-driven-ai-dlc.md) and [playbook](ai-dlc-implementation-playbook.md) use these primary sources, checked 28 September 2026:
-
-- [AWS AI-DLC methodology](https://aws.amazon.com/blogs/devops/ai-driven-development-life-cycle/): inception, construction and operations with human validation. The six-layer architecture in this portfolio is the author's synthesis.
-- [DORA delivery metrics](https://dora.dev/guides/dora-metrics/): definitions of delivery performance measures. Additional intent, review and evidence metrics are labeled as proposed measures.
-- [Kiro specs](https://kiro.dev/docs/specs/), [Backstage catalog](https://backstage.io/docs/features/software-catalog/) and [Bedrock Knowledge Bases](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html): examples of specification, catalog and retrieval capabilities.
-- [GitHub Copilot cloud agent](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent), [Temporal](https://docs.temporal.io/) and [GitHub deployment environments](https://docs.github.com/en/actions/reference/workflows-and-actions/deployments-and-environments): examples of agent execution, durable workflows and deployment controls.
-- [OPA](https://www.openpolicyagent.org/docs), [Promptfoo](https://www.promptfoo.dev/docs/intro/) and [Langfuse](https://langfuse.com/docs): examples of policy evaluation, AI testing and observability/evaluation tooling.
-- [OpenTelemetry GenAI conventions](https://github.com/open-telemetry/semantic-conventions-genai): telemetry concepts and versioned conventions. Relevant specifications remain under development.
-
-Product capability references do not establish contractual suitability, licensing, security approval, integration completeness or performance. Buy/adopt/build choices are architecture recommendations. All worked numerical examples are illustrative, not measured employer outcomes.
+Product references establish documented capabilities, not contractual suitability, security approval, validated integration or measured domain performance. Tool placement and control design are proposals to evaluate.

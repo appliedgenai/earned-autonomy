@@ -1,14 +1,20 @@
-# One workflow, end to end
+# SC-42: from service-case investigation to verified action
 
-## AI-assisted account maintenance
+## A bounded investigation with a controlled account-maintenance step
 
 **Design exercise, not a deployed implementation.** All identifiers and scenarios are synthetic. The goal is to demonstrate the decisions behind the articles, including where automation must stop.
+
+### Why the investigation uses an agent
+
+An advisor asks why service case SC-42 remains open. The agent checks permitted case history, account status and supporting records, follows discrepancies within its tool scope, and assembles a resolution package. A possible mailing-address mismatch is evidence to investigate, not authorization to change the account. Missing or conflicting policy evidence goes to the domain owner.
+
+The variable investigation may benefit from an agent; the address change below is a deterministic execution step. Compare the investigation against a fixed checklist plus extraction before choosing the more complex approach. This proposal retains human approval for the address action.
 
 ### Scope and outcome
 
 Prepare and submit a mailing-address maintenance request for an eligible account after required verification and human approval. Existing fraud, identity, jurisdiction and business controls remain authoritative. Exclude trades, money movement, investment advice, beneficiary changes and any case the policy classifies as ineligible.
 
-Completion means the approved change is reflected in the authoritative account service, the downstream receipt is linked to the operation, and the advisor sees a confirmed result. Receipt of an HTTP response alone is insufficient.
+Action completion means the approved change is reflected in the authoritative account service, the downstream receipt is linked to the operation, and the advisor sees a confirmed result. Receipt of an HTTP response alone is insufficient. SC-42 closes only when the servicing workflow's separate resolution conditions are satisfied and closure is authorized and confirmed. The state machine below describes the account action, not whole-case closure.
 
 ### Action contract
 
@@ -55,6 +61,12 @@ Cancellation before dispatch does not prove cancellation of an in-flight side ef
 
 For a destination without conditional writes or reliable operation lookup, begin in draft-only mode. Broader execution requires a defensible serialization/reconciliation design and acceptance of the remaining risk by the accountable owners.
 
+### A reconstructable decision record
+
+[![SC-42 evidence record connects exact proposal and authority with a timed-out operation and subsequent verified reconciliation](diagrams/p2-decision-record.png)](diagrams/p2-decision-record.png)
+
+The figure uses synthetic identifiers and redacted payload references. It records operation `OP-42` first as unknown after a timeout, then verified after lookup and state comparison. Reconstruction inspects retained evidence; it does not repeat the live side effect. Store the exact approved payload securely, including the approving actor, grant and policy bindings.
+
 ### What the review screen must show
 
 Show the account identifier appropriate to the user's access, before/after fields, required verification status, provenance, unresolved warnings and expiry. State exactly what approval will initiate. A reviewer cannot approve a hidden expansion of the requested change.
@@ -63,11 +75,17 @@ Show unresolved and partially completed work prominently. The advisor should nev
 
 ### Evaluation before expansion
 
-The [evaluation cases](examples/evaluation-cases.json) define expected business outcomes for eight failure modes. They are a test specification, not executed tests.
+The [evaluation cases](examples/evaluation-cases.json) define expected behavior for execution, semantic-evaluation and authority-change failure modes. They are a test specification, not executed tests.
 
 An implemented test harness should assert downstream state, number of side effects, policy decisions and evidence records. Stub destination failures deterministically, then test integrations in an isolated environment. Add representative cases labeled by operations; reserve a held-out set and report performance by risk class.
 
 Before a supervised pilot, require no unauthorized writes or duplicate effects in the defined security/reliability suite, owned exception routing, working reconciliation, verified evidence access controls and a rehearsed stop procedure. Passing that suite does not establish a real-world failure-rate guarantee.
+
+### Semantic evaluation and grant changes
+
+For the resolution package, use a rubric covering source support, omitted contradictions, unresolved facts and the appropriateness of escalation. Jev or an LLM judge is a candidate evaluator, calibrated against independently adjudicated domain cases. Permission, payload, date and final-state checks remain deterministic. Required evaluator failure takes the action's defined hold/review path; a high score never grants write permission.
+
+The separate `create_internal_case` action creates a linked internal specialist follow-up for SC-42 and starts approval-required. Restrict it to draft-only or expand it to bounded execution only through an owner-approved, versioned grant for the same action and cohort, subject to predefined emergency restriction controls. SC-42's account update remains approval-required. Improvements to sources, prompts, tools or models have their own evaluation and rollout decision. See the [full evaluation and authority loop](02-agents-you-can-audit.md#two-feedback-loops-two-decisions).
 
 ### A staged first 90 days
 

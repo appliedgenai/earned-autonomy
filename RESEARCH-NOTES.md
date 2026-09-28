@@ -1,4 +1,4 @@
-# Research notes for the next autonomy revision
+# Research notes for the autonomy revision
 
 Reviewed 28 September 2026. These notes distinguish primary-source facts from architectural recommendations. Recheck changing product details before publication.
 
@@ -12,7 +12,7 @@ Reviewed 28 September 2026. These notes distinguish primary-source facts from ar
 | [Anthropic: Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents) | Workflow versus agent distinctions and complexity tradeoffs. | Explain why adaptive investigation adds value before introducing an agent. |
 | [FINRA 2026 GenAI discussion](https://www.finra.org/rules-guidance/guidance/reports/2026-finra-annual-regulatory-oversight-report/gen-ai) | Supervision, testing, monitoring, agent authority, auditability and sensitive-data concerns. | Regulatory context; it does not prescribe our architecture or certify compliance. |
 
-## Proposed synthesis
+## Synthesis used in the paper
 
 Use an action-authority matrix, an execution/control diagram and a real evaluation feedback diagram. Keep semantic judge assessment separate from policy enforcement. Separate changes to system/model behavior from changes to authority. Treat training as an optional versioned intervention requiring suitable labeled data and held-out evaluation.
 

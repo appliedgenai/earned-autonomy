@@ -1,72 +1,66 @@
 # Earned Autonomy
 
-### How to give enterprise agents permission to act in regulated workflows
+### Use agents to investigate. Grant them bounded permission to act. Keep that permission revocable.
 
 **A six-minute visual brief · Mohit Mittal · September 2026**
 
-**An enterprise should grant an agent bounded authority over specific business actions, with enforceable limits, verified outcomes and an accountable owner.** Evidence can justify expanding that authority within the firm's permitted boundaries; it cannot remove a legal or business requirement for human approval.
+**An enterprise agent earns useful autonomy when it resolves more work under explicit controls, with less total human effort.** The operating model has two feedback loops: improve the system using evaluated outcomes, and separately decide whether a specific action should gain, retain or lose permission. A better model does not grant itself more authority.
 
-That is the message of this paper. Its subject is **agent autonomy in regulated operations**: moving from useful answers to dependable action. The financial-services examples are illustrative designs.
+[Read the full paper](02-agents-you-can-audit.md) · [Reference design](reference-design.md) · [Sources](SOURCES.md)
 
-[Read the full paper](02-agents-you-can-audit.md) · [Inspect the reference design](reference-design.md) · [Research sources](SOURCES.md)
+## 1 · Start with work that actually needs investigation
 
-## 1 · Separate freedom to reason from permission to act
+“Why is this advisor service case still open, and what can we safely do next?”
 
-An assistant may investigate a problem through several steps, compare sources and prepare a proposal. That reasoning flexibility does not give it permission to change an account or send a client communication.
+The answer may depend on a request, case history, account status, submitted documents and applicable servicing rules. One case needs missing evidence; another contains conflicting records; another needs a specialist. An agent can select the next permitted source as it learns, assemble an evidence-backed resolution package and escalate unresolved ambiguity.
 
-| Decision | Who or what controls it? |
+That adaptive investigation is the reason to consider an agent. A fixed address update can use an ordinary workflow. Compare the agent against that simpler baseline; compliance requirements alone do not justify agent complexity.
+
+Use one illustrative case, **SC-42**, throughout this design. The investigation identifies a possible mailing-address mismatch. It can propose a correction, but the advisor's request to investigate does not authorize changing the account.
+
+## 2 · Assign permission to each action
+
+[![One service case with action-specific authority and a reversible delegation path](diagrams/p2-autonomy-per-action.png)](diagrams/p2-autonomy-per-action.png)
+
+The same assistant can read permitted sources, prepare a resolution package, create a linked internal specialist follow-up case and propose an account update. Each action has its own scope, approval conditions and policy ceiling. Creating that follow-up starts approval-required. Selected follow-up types may later qualify for bounded execution; SC-42's account update retains human approval.
+
+Bind approval to the exact proposal and relevant record version. Recheck rights, policy, expiry and current state immediately before dispatch. A controlled executor and destination service enforce the change. Human approval returns through those checks; it never bypasses them.
+
+A timeout means **outcome unknown** until reconciliation establishes what happened. Display action completion only after authoritative state confirms it; otherwise expose an owned exception. A verified update completes that action; closing SC-42 requires its separate resolution conditions and authorization.
+
+## 3 · Evaluate judgment and consequences
+
+Use three kinds of evidence: code checks for exact conditions and actual state; semantic judges for source support and completeness; domain reviewers for difficult cases, calibration and sampled accepted work.
+
+**LLM-as-a-judge and TypeSafe's Jev belong in the semantic evaluation role.** Jev offers typed judgments and probabilities; it does not generate explanations. Evaluate it against domain-labeled cases before choosing where it fits. A typed verdict is still fallible. [TypeSafe documentation](https://docs.typesafe.ai/concepts/system-one)
+
+For SC-42, a judge can assess whether the proposed resolution is supported by the supplied evidence. Code checks the exact account, rights, approved fields, dates and destination outcome. A high judge score cannot authorize an account write or override missing mandatory evidence.
+
+Run failure and regression cases before deployment. In production, enforce required controls on every applicable action, combine outcome monitoring with risk-based semantic review, and independently sample accepted cases. Monitoring only escalations misses confidently wrong answers.
+
+## 4 · Close the loop without giving the system permission to promote itself
+
+[![Operational evidence feeds evaluation and separate system-improvement and authority-review loops](diagrams/p2-evaluation-loop.png)](diagrams/p2-evaluation-loop.png)
+
+**Improve behavior:** investigate failures; correct sources, retrieval, instructions or tools; consider model changes or offline training for persistent behavior gaps. Evaluate the versioned candidate on held-out cases before rollout. Raw traces and unreviewed judge verdicts are not training truth.
+
+**Adjust authority:** review evidence for the same action and cohort. Expand deliberately within policy ceilings. Restrict sustained quality failures through predefined thresholds. Defined severe control events can suspend affected new actions immediately, with a separate procedure for work already in flight. Restoration requires evidence, an owner and a recorded decision.
+
+Track the signals that support those decisions:
+
+| Signal | What it tells the owner |
 |---|---|
-| How should the agent investigate and propose? | The model and harness, inside a bounded task and tool scope. |
-| May this exact business action execute now? | Current entitlements, business policy, approval conditions and destination controls. |
+| Unauthorized effects and incorrect completion | Whether the system acted outside its grant or claimed a result it did not achieve. |
+| Missed escalation and judge unsafe passes | Whether apparently acceptable cases conceal consequential errors. |
+| Unknown outcomes, age and evidence gaps | Whether operations can reconstruct and resolve the work. |
+| Autonomous coverage alongside human effort | Whether useful work is completed with less review, exception handling and rework. |
 
-[![Different actions within one assistant have different autonomy ceilings](diagrams/p2-autonomy-per-action.png)](diagrams/p2-autonomy-per-action.png)
+The full paper defines denominators and sampling. A low override rate can reflect weak review; a small zero-failure pilot cannot establish rare-event safety. Agree thresholds before assessing results.
 
-*The ladder is illustrative. Each action has a policy ceiling. Better model performance does not raise that ceiling automatically.*
-
-A meeting summary, a draft follow-up and an account update belong to different permission classes—even when one assistant performs all three. Assess authority **per action, population and environment**. Start with drafts or supervised execution where appropriate, and name the owner who can expand, restrict or stop the action.
-
-This matters to an advisor platform because less effort preparing work has limited value if completion creates more work for operations. [FINRA's 2026 GenAI discussion](https://www.finra.org/rules-guidance/guidance/reports/2026-finra-annual-regulatory-oversight-report/gen-ai) addresses authority, supervision and auditability concerns. The design below is an engineering response, not a regulator-prescribed architecture.
-
-## 2 · Put permission at the point of execution
-
-Consider a mailing-address correction. The advisor approves the proposed change. Before execution, someone updates the same record. The submitted write later times out.
-
-Two questions now matter: **is the approval still valid, and did the action happen?** A fluent model response answers neither.
-
-[![The agent proposes; policy and execution services control the action; assurance records the outcome](diagrams/p2-model-proposes-policy-decides.png)](diagrams/p2-model-proposes-policy-decides.png)
-
-The action contract names the actor, target, permitted fields, evidence, approval requirements, expected record version, completion condition and recovery owner. Approval binds to that exact proposal. Execution rechecks rights, policy and relevant record state. Material changes require fresh review.
-
-Use durable operation identity, conditional writes and destination-supported duplicate prevention. A timeout produces an **unknown outcome** until reconciliation resolves it. A kill switch stops new actions and has a separate runbook for work already in flight. Human approval and MCP connectivity do not replace these controls.
-
-The user sees “completed” only after authoritative state confirms completion. Otherwise, the system shows a pending or failed result with a named resolution path.
-
-## 3 · Make agent observability explain business consequences
-
-A model trace can show tool calls, latency and tokens. The business needs to know **who authorized what, what changed and whether the request was resolved**.
-
-Link the request and action IDs to the proposal, source versions, policy decision, approval, execution receipt and verified outcome. Record concise decision factors; hidden model reasoning is unnecessary. Apply access and retention rules to sensitive evidence.
-
-Monitor stale approvals, denied actions, repeated attempts, uncertain writes, overdue exceptions, reviewer corrections and total workflow cost. A successful tool response is not always a completed business process.
-
-Observability has an operational purpose: detect a problem, restrict the affected action, give an owner enough evidence to recover, and add a regression case before restoring authority.
-
-## 4 · Earn expansion with evidence and recovered capacity
-
-Evaluate wrong-account selection, revoked rights, stale data, injected document instructions, duplicate requests, policy outages and partial completion. Test disruptive cases outside live customer workflows. Review results by action and risk cohort; zero failures in a small pilot does not establish rare-event safety.
-
-Expansion requires an accountable business owner, applicable risk review, defined observation criteria and a permitted policy ceiling. Restrictions need explicit triggers and a recovery process. Model confidence alone is never the promotion rule.
-
-Measure the result from request arrival through resolution:
-
-**Recovered human capacity = baseline effort − handling, review, exception and rework effort after automation.**
-
-Report that beside verified completion, unresolved outcomes, exception age, quality and total cost per completed workflow. Include unsuccessful attempts and operational support. Faster drafting that produces more reconciliation has not delivered the intended benefit.
-
-The practical starting point is one bounded action with clear completion semantics and manageable recovery. Prove that it closes work under control; then reuse its identity, policy, execution and evidence interfaces for another action.
+**The executive decision:** fund one bounded investigation-and-resolution workflow, its execution controls and evaluation capability. Expand only when verified outcomes and total effort justify it. Maximum autonomy is not the objective; dependable resolution is.
 
 ---
 
-**About the author:** Mohit Mittal is a Chief Architect with 22+ years in enterprise architecture and distributed systems. His experience includes governed agent infrastructure and MCP servers in healthcare, and production LLM/RAG systems at Chegg. These financial-services examples are independent proposals, not claimed deployments.
+**Author:** Mohit Mittal, Chief Architect, with 22+ years in enterprise architecture and distributed systems, including production LLM/RAG work at Chegg and governed agent infrastructure and MCP servers in healthcare. SC-42 is a synthetic design, not an employer deployment or measured result.
 
-[Full paper](02-agents-you-can-audit.md) · [Failure cases and reference design](reference-design.md) · [Separate six-layer AI-DLC architecture](https://github.com/appliedgenai/intent-to-production) · [Sources](SOURCES.md) · [CC BY 4.0](LICENSE.md)
+[Full paper](02-agents-you-can-audit.md) · [Sources and scope](SOURCES.md) · [Separate AI-DLC architecture](https://github.com/appliedgenai/intent-to-production) · [CC BY 4.0](LICENSE.md)
