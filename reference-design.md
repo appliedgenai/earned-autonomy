@@ -97,16 +97,16 @@ Size the whole investigation/resolution workflow, then evaluate the incremental 
 
 **Monthly net capacity value = gross capacity value − R − E − P − G.**
 
-| Input | Meaning | Value to supply |
+| Input | Meaning | How to establish it |
 |---|---|---|
-| N | Eligible cases/month, using fixed eligibility rules. | [ILLUSTRATIVE — replace with real data: eligible monthly volume] |
-| m | Baseline handling minutes/case for the work expected to be removed. | [ILLUSTRATIVE — replace with real data: handling minutes] |
-| r | Expected gross reduction, as a fraction; replace with observed results after evaluation. | [ILLUSTRATIVE — replace with real data: reduction assumption] |
-| H | Loaded cost in dollars/hour for the affected work. | [ILLUSTRATIVE — replace with real data: hourly cost] |
-| R | Incremental review cost, dollars/month. | [ILLUSTRATIVE — replace with real data: review cost] |
-| E | Incremental exception/recovery/rework cost, dollars/month. | [ILLUSTRATIVE — replace with real data: exception cost] |
-| P | Incremental model, evaluator, runtime and platform cost, dollars/month. | [ILLUSTRATIVE — replace with real data: platform cost] |
-| G | Incremental governance-program cost, dollars/month. | [ILLUSTRATIVE — replace with real data: governance cost] |
+| N | Eligible cases/month, using fixed eligibility rules. | Count qualifying cases in operations records over a representative period. |
+| m | Baseline handling minutes/case for the work expected to be removed. | Sample handling time for eligible cases before introducing the agent. |
+| r | Expected gross reduction, as a fraction. | Test a stated planning assumption against observed handling-time reduction. |
+| H | Loaded cost in dollars/hour for the affected work. | Use the labor-cost basis agreed with finance. |
+| R | Incremental review cost, dollars/month. | Estimate review volume × minutes per review ÷ 60 × loaded hourly cost; validate during evaluation. |
+| E | Incremental exception/recovery/rework cost, dollars/month. | Estimate exception volume and recovery effort; include failed and abandoned attempts. |
+| P | Incremental model, evaluator, runtime and platform cost, dollars/month. | Estimate usage, unit prices and allocated platform costs; validate against metered usage. |
+| G | Incremental governance-program cost, dollars/month. | Estimate recurring oversight effort and cost allocation with accountable owners. |
 
 Count each item once. If r already measures net handling reduction including review and recovery, exclude those included items from R/E. Preserve unsuccessful and abandoned attempts in cohort costs; disclose pending outcomes. Implementation cost and the 90-day budget are separate one-time investment inputs. Report both observed hours released and their monetary valuation; a cash-savings claim additionally needs an actual spending reduction.
 
@@ -114,7 +114,7 @@ For the A2-to-A3 decision, compare approval effort removed with added audit, exc
 
 ### A staged first 90 days
 
-The operations sponsor owns the outcome. A platform lead owns execution and recovery; domain reviewers define correct results; evaluation and risk partners set entry criteria. Staff allocation and budget cap: [ILLUSTRATIVE — replace with real data: roles, allocation and 90-day investment]. Advance only when entry criteria pass.
+The operations sponsor owns the outcome. A platform lead owns execution and recovery; domain reviewers define correct results; evaluation and risk partners set entry criteria. Advance only when entry criteria pass.
 
 | Window | Deliverable | Decision at the end |
 |---|---|---|

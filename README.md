@@ -68,7 +68,7 @@ Choose frequent cases where investigations take different paths, outcomes are me
 
 **Monthly net capacity value** = eligible cases × handling minutes × expected gross reduction ÷ 60 × loaded hourly cost − incremental review, exception, runtime/platform and governance costs.
 
-[ILLUSTRATIVE — replace with real data: all formula inputs; costs in dollars/month; implementation cost reported separately]. Count costs once. Released capacity becomes cash savings through a spending reduction.
+Use monthly volumes and dollar costs; report implementation costs separately. Count costs once. Released capacity becomes cash savings through a spending reduction.
 
 Price the whole workflow and the extra benefit of removing follow-up approval separately. Stop if review and recovery consume the benefit. [Sizing worksheet](reference-design.md#value-sizing)
 
@@ -95,8 +95,6 @@ The operations sponsor owns results; the platform lead owns execution and recove
 | Days 1–30 | Select cases; baseline effort/cost; agree permissions and recovery responsibilities. |
 | Days 31–60 | Implement controls; test approvals, restrictions and recovery from uncertain outcomes. |
 | Days 61–90 | Supervised use when entry criteria pass. Review costs, outcomes and controls; decide: expand, narrow or stop. |
-
-**Resources:** [ILLUSTRATIVE — replace with real data: staff allocation and 90-day budget cap].
 
 > **What this is and isn't:** A reference architecture with synthetic cases and unexecuted design artifacts. The modes are optional design vocabulary; shadow results cannot establish write/recovery safety. Owners set thresholds. No deployed results, vendor endorsement or compliance certification is asserted.
 
