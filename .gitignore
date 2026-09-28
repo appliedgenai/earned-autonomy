@@ -1,0 +1,5 @@
+private/
+work/
+*.zip
+.env
+.env.*
