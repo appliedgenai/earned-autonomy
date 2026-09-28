@@ -1,0 +1,64 @@
+{
+  "kind": "illustrative-authority-review",
+  "synthetic": true,
+  "version": "1.0",
+  "review_id": "AR-CF-42",
+  "action": "create_internal_case",
+  "agent_id": "servicing-investigator",
+  "configuration_revision": "SI@r7",
+  "cohort": "Eligible servicing cases with verified parent/account linkage and an approved follow-up type/queue",
+  "current_grant": {
+    "reference": "CF-42@v1",
+    "mode": "A2"
+  },
+  "requested_grant": {
+    "reference": "CF-42@v2",
+    "mode": "A3",
+    "scope": [
+      "approved_parent_account_relationship",
+      "named_follow_up_types",
+      "named_destination_queues",
+      "approved_fields"
+    ],
+    "limits": [
+      "owner_defined_volume_cap",
+      "expiry",
+      "validated_configuration"
+    ],
+    "duplicate_rule": "Destination-supported binding for parent_case_and_follow_up_type; reconcile existing operation"
+  },
+  "evidence_packet": {
+    "window": "Required before review; not supplied by this synthetic example",
+    "population": "Matured eligible cohort, with pending and abandoned work disclosed",
+    "required": [
+      "policy_allows_delegation",
+      "domain_adjudicated_necessity_and_routing",
+      "verified_destination_effects_and_duplicate_control",
+      "judge_error_calibration_when_used",
+      "sampling_probabilities_and_strata",
+      "exception_queue_capacity",
+      "total_human_effort_and_workflow_cost",
+      "restriction_and_recovery_drill"
+    ],
+    "numerical_acceptance_limits": "Set by accountable owners before observing candidate results",
+    "illustrative_gap": "Necessary/correctly routed follow-up evidence is incomplete"
+  },
+  "decision": {
+    "status": "retain_A2",
+    "reason": "Execution correctness alone does not establish business appropriateness or net benefit",
+    "authorizing_owner": "servicing_action_owner",
+    "next_step": "Adjudicate the missing evidence and evaluate a versioned candidate; do not auto-promote"
+  },
+  "restriction": {
+    "severe_trigger": "Confirmed effect on an out-of-scope parent case",
+    "new_dispatch": "Block affected grant through enforcement service",
+    "console_states": [
+      "requested",
+      "enforcement_confirmed",
+      "in_flight_reconciled"
+    ],
+    "in_flight": "Inspect durable operations and authoritative state",
+    "restore": "Relevant repair/regression/observation evidence and recorded owner decision; specify restored mode"
+  },
+  "assurance": "Synthetic decision record; no measured outcomes or production approvals asserted"
+}

@@ -1,0 +1,79 @@
+{
+  "kind": "illustrative-agent-registration",
+  "synthetic": true,
+  "version": "1.0",
+  "agent_id": "servicing-investigator",
+  "configuration_revision": "SI@r7",
+  "owner": "advisor-servicing",
+  "purpose": "Investigate eligible service cases and propose bounded next actions",
+  "runtime_binding": {
+    "shared_harness_contract": "agent-runtime@v1",
+    "deployment_mode": "must_demonstrate_required_controls",
+    "unsupported_control": "remain_outside_affected_execution_mode"
+  },
+  "identity": {
+    "workload_identity_reference": "approved_servicing_identity",
+    "delegation": "current_user_scope_and_case_scope"
+  },
+  "context": {
+    "access_profile": "approved_servicing_sources",
+    "untrusted_material": "data_not_instructions",
+    "missing_required_evidence": "hold_and_route_domain_review"
+  },
+  "tool_profile": {
+    "read_tools": [
+      "read_service_case",
+      "read_account_status",
+      "read_submitted_evidence"
+    ],
+    "action_tools": [
+      "create_internal_case",
+      "submit_mailing_address_maintenance"
+    ],
+    "note": "Tool availability is not an authorization grant"
+  },
+  "action_grant_references": [
+    {
+      "action": "create_internal_case",
+      "grant": "CF-42",
+      "initial_mode": "A2",
+      "possible_policy_ceiling": "A3_for_approved_types_and_queues"
+    },
+    {
+      "action": "submit_mailing_address_maintenance",
+      "grant": "G-42",
+      "initial_mode": "A2",
+      "policy_ceiling": "A2"
+    }
+  ],
+  "budget_profile": "owner_approved_time_tool_volume_and_cost_limits",
+  "evaluations": {
+    "required_pre_action_checks": "per_action_contract",
+    "semantic_rubric": "source_support_necessity_routing_and_escalation",
+    "continuous_review": "outcomes_plus_risk_based_sampling_including_accepted_cases",
+    "offline_requalification": "material_system_or_grant_change",
+    "suite_reference": "evaluation-cases.json"
+  },
+  "execution": {
+    "fresh_grant_lookup": true,
+    "exact_payload_binding": true,
+    "durable_operation_identity": true,
+    "destination_contract_required": true,
+    "restriction_acknowledgment": "report_effective_revision_and_enforcement_time",
+    "in_flight_stop": "reconcile_do_not_assume_undo"
+  },
+  "evidence": {
+    "profile": "controlled_case_and_action_evidence",
+    "correlation": [
+      "case_id",
+      "agent_id",
+      "configuration_revision",
+      "action_grant_revision",
+      "proposal_id",
+      "operation_id",
+      "evaluation_revision"
+    ]
+  },
+  "exception_route": "designated_servicing_operations_queue",
+  "assurance": "Configuration proposal only; enforcement and integration must be implemented and tested"
+}

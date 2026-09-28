@@ -83,6 +83,8 @@ Before a supervised pilot, require no unauthorized writes or duplicate effects i
 
 ### Semantic evaluation and grant changes
 
+The four modes and [worked grant review](02-agents-you-can-audit.md#one-action-through-the-four-modes) apply to a specific action/cohort. [The agent profile](examples/agent-profile.json) binds this servicing investigator to the shared harness. [The authority-review example](examples/authority-review.json) records why a proposed A3 grant remains at A2. The console records requested restrictions separately from runtime confirmation and in-flight reconciliation.
+
 For the resolution package, use a rubric covering source support, omitted contradictions, unresolved facts and the appropriateness of escalation. Jev or an LLM judge is a candidate evaluator, calibrated against independently adjudicated domain cases. Permission, payload, date and final-state checks remain deterministic. Required evaluator failure takes the action's defined hold/review path; a high score never grants write permission.
 
 The separate `create_internal_case` action creates a linked internal specialist follow-up for SC-42 and starts approval-required. Restrict it to draft-only or expand it to bounded execution only through an owner-approved, versioned grant for the same action and cohort, subject to predefined emergency restriction controls. SC-42's account update remains approval-required. Improvements to sources, prompts, tools or models have their own evaluation and rollout decision. See the [full evaluation and authority loop](02-agents-you-can-audit.md#two-feedback-loops-two-decisions).

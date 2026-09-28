@@ -14,6 +14,14 @@ Reviewed 28 September 2026. These notes distinguish primary-source facts from ar
 
 ## Synthesis used in the paper
 
-Use an action-authority matrix, an execution/control diagram and a real evaluation feedback diagram. Keep semantic judge assessment separate from policy enforcement. Separate changes to system/model behavior from changes to authority. Treat training as an optional versioned intervention requiring suitable labeled data and held-out evaluation.
+Use four action-scoped permission modes, a shared harness, an operational console, an execution/control diagram and an evaluation feedback diagram. The modes are proposed design vocabulary, not a claimed standard. Keep semantic judge assessment separate from policy enforcement. Separate changes to system/model behavior from changes to authority. Treat training as an optional versioned intervention requiring suitable labeled data and held-out evaluation.
+
+The worked SC-42 promotion request is synthetic. It demonstrates why API correctness alone cannot justify delegation: necessity, routing, recovery, operational capacity and total human effort also matter. No numerical promotion threshold or observed improvement has been invented. The console snapshot precedes the verified outcome in the reference design's decision record.
+
+## Audience-aware editorial decisions
+
+Public financial-services technology material already discusses agent identity, scoped action, confirmation, monitoring and shutoff. For example, [LPL's technology webcast](https://www.lpl.com/join-lpl/managing-your-business/tech-capabilities-and-offerings.html) covers these subjects. Treat governance basics as established audience knowledge. Public material does not establish internal implementation coverage or reveal a capability gap.
+
+[LPL's Focus 2026 release](https://investor.lpl.com/news-releases/news-release-details/lpl-financial-opens-focus-2026-bringing-together-thousands) emphasizes advisor capacity; its [Latitude announcement](https://www.lpl.com/news-media/press-releases/lpl-financial-latitude-unifies-technology-built-for-future-of-advice.html) describes a unified technology direction. The editorial inference is to lead with net workflow effort and reusable operating interfaces. This is an audience assessment, not a statement of any executive's private priorities or reaction.
 
 No Jev benchmark, training exercise or integrated financial-services implementation was run for this paper. Any suggested tool placement is a design recommendation to evaluate.

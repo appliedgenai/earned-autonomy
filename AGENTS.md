@@ -31,6 +31,9 @@ State the thesis immediately. Establish why a task warrants an agent before expl
 - Separate system improvement from authority changes. Better models or judge scores do not automatically confer broader permissions. Policy ceilings and mandatory approvals remain binding.
 - Explain expansion, restriction, suspension and restoration per action, cohort, environment and version. Avoid a single universal trust score or invented promotion threshold.
 - Treat model training as an optional controlled response to demonstrated behavior gaps. Investigate source, retrieval, prompt, tool and workflow defects first. Do not assume every vendor exposes fine-tuning.
+- Use four permission modes for a specific action/cohort: A0 shadow, A1 propose, A2 approved execution and A3 bounded execution. This is a proposed vocabulary, not an industry standard. Shadow results cannot establish live-write safety; mode progression is optional and suspension is a separate control state.
+- Bind each registered agent to versioned shared-harness controls. Do not suggest that wrapping an unsupported provider establishes enforcement. A second workflow reuses interfaces but requires its own action evidence and recovery integration.
+- Distinguish a requested restriction, confirmed runtime enforcement and reconciled in-flight work in the console. Required inline checks, ongoing outcome/sample evaluation and offline requalification have different jobs.
 
 ## Narrative and diagram requirements
 

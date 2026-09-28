@@ -4,51 +4,46 @@ Updated 28 September 2026.
 
 ## Goal and scope
 
-Explain when an enterprise should use an agent, which specific business actions it may perform, and how verified outcomes inform retaining, expanding or restricting its authority. Connect business benefit, evaluation, observability and accountable operating decisions.
+Explain which agent action can receive more authority, what evidence supports the decision, and whether delegation reduces total human work. The entry point is a six-minute visual brief; the full paper supplies execution contracts, failure behavior, operating roles, evaluation and metrics.
 
-The entry point is a six-minute visual brief; detailed controls, rubrics, failure behavior and metrics belong in the full paper and reference design. Reading time is a design target, not a guarantee. Work on Earned Autonomy separately from the [AI-DLC architecture](https://github.com/appliedgenai/intent-to-production), unless the user expands scope.
+The current revision uses four action-scoped modes, a shared harness, an agentic console and continuous evaluation. It is a reference architecture, not a deployed product or an assertion that any particular firm lacks these capabilities. Work on this paper separately from the [AI-DLC architecture](https://github.com/appliedgenai/intent-to-production).
 
-## Current publication — completed
+## Current revision
 
-The revised brief, full paper and reference design are published and verified on GitHub. This revision replaces the earlier paper at `fb580b3` and completes the work identified when project instructions were added at `4bb6cc0`.
+Editorial and architecture review completed; publication verification is pending. The prior published baseline is [7b78189](https://github.com/appliedgenai/earned-autonomy/commit/7b781896e9f5cafe236953b2e43028b717f4736b).
 
-| Artifact | Published commit | Verification |
-|---|---|---|
-| Four diagrams, editable SVGs and diagram index | [971328b](https://github.com/appliedgenai/earned-autonomy/commit/971328b1a305dfd5e7deaafed99ec1b237b19b19) | All four rendered PNGs visually reviewed locally; all four loaded in the published brief, paper or reference design. |
-| Action contract and fifteen evaluation scenarios | [f48918f](https://github.com/appliedgenai/earned-autonomy/commit/f48918fdb5977cd75f47bdf18726d0af1edffa0b) | JSON parses; fifteen unique scenario IDs; final architecture rereview resolved current-grant and unknown-evidence semantics. |
-| Brief, paper, reference design, sources and navigation cleanup | [c1936e6](https://github.com/appliedgenai/earned-autonomy/commit/c1936e6bce3d76dc2000f746966eaa9c16240315) | Published thesis, Jev section, feedback loops, corrected metric and case-closure boundary inspected. Reference Mermaid diagram renders. |
-
-## Completed revision checklist
-
-- [x] Justify adaptive investigation against a deterministic workflow or extraction baseline.
-- [x] Use synthetic service case SC-42 throughout, without claiming a production deployment.
-- [x] Replace the old ladder with an action-authority matrix; show the same linked follow-up action gaining or losing permission.
-- [x] Route exact approval through fresh dispatch checks, controlled execution, destination enforcement and outcome verification/reconciliation.
-- [x] Explain code checks, semantic judges and domain adjudication, including accepted-case sampling and evaluator failure.
-- [x] Place LLM-as-a-judge and TypeSafe's Jev accurately, with typed-output, calibration, uncertainty and version limitations.
-- [x] Draw separate system-improvement and authority-review feedback loops, plus immediate restriction for defined severe control events.
-- [x] Explain optional model changes/training with approved data, reviewed labels, held-out evaluation and controlled rollout.
-- [x] Define expansion, restriction, suspension and restoration by action, cohort and version; preserve mandatory approvals.
-- [x] Define autonomy observability measures with denominators, windows, severity, sampling and business-effort qualifications.
-- [x] Distinguish verified action completion from authorized whole-case closure and whole-case autonomous coverage.
-- [x] Resolve source, architecture and skeptical-reader reviews; inspect all four rendered diagrams.
-- [x] Validate relative file/image links, heading anchors, JSON and SVG syntax; audit external destinations.
-- [x] Clean navigation: superseded delivery essays point to the current AI-DLC paper and their original Git-history versions. Historical diagram assets remain labeled as background.
-- [x] Publish and verify the actual GitHub paper, images, reference diagram and history pointers.
+- Rebuilt the executive story around net advisor/operations effort and one concrete permission decision.
+- Added four modes for a specific action/cohort: shadow, propose, approved execution and bounded execution. Suspension is a separate control state.
+- Worked through the linked specialist-follow-up action from drafting to supervised use, a rejected premature promotion, possible narrow delegation, and restriction/restoration. The address action retains approval.
+- Added a shared-harness diagram and per-agent registration example. Unsupported providers cannot be assumed to inherit enforcement guarantees.
+- Added an illustrative console showing current grants, requested promotion, missing evidence, pending enforcement acknowledgment and an unknown operation.
+- Kept inline checks, ongoing monitoring/sample review and offline candidate evaluation distinct. System improvement and authority changes remain separate decisions.
+- Expanded evaluation specifications from fifteen to twenty-two cases, including A0/A1 execution boundaries, unsupported provider controls, restriction acknowledgment and missing promotion evidence.
+- Preserved the execution, evaluation-loop and decision-record diagrams. Six current diagrams have editable SVG sources; the brief uses only the four-mode and console figures.
+- Completed independent source/audience research, skeptical-reader review and targeted architecture review. The three changed/new diagrams were visually inspected by the lead and both targeted reviewers. No material finding remains in that scope.
 
 ## Decisions to preserve
 
-- Business benefit must justify agent complexity. Compliance constraints alone do not establish the business case.
-- Reasoning flexibility, semantic assessment, business-action permission and verified outcome are separate concerns.
-- The linked specialist-follow-up action starts approval-required; its grant can later be narrowed or expanded. SC-42's account update retains human approval.
-- A judge cannot grant authority. Better system behavior does not automatically increase permission.
-- Training is optional; diagnose source, retrieval, prompt, tool and workflow defects first. Raw traces and unadjudicated judge verdicts are not training truth.
-- Unknown outcomes are valid recorded states. Receipts and verified results are conditional; unresolved work requires an owner.
-- A human-approved case is not counted as fully autonomous. Reduced human effort can still establish value.
-- Low overrides, high judge agreement and a small zero-failure pilot do not prove readiness for broad expansion.
+- Lead with business value and a reusable operating decision. Basic logging, scoped access and approval are established enterprise concerns, not a claim of novelty.
+- Use synthetic SC-42 consistently. Do not invent first-person deployments, pilot results, incidents or savings. Author background must come from supplied facts.
+- Permission is versioned separately from model/system releases, per action, cohort, environment and validated configuration. An agent has mixed permissions, not one global maturity score.
+- A0/A1 results cannot establish actual-write safety. A2 requires qualified execution, exact approval, fresh authorization and owned recovery. A3 additionally requires same-action outcomes, policy eligibility, capacity and net benefit.
+- A judge, including Jev, cannot authorize execution. Judge confidence, API validity and low overrides cannot by themselves justify broader authority.
+- The shared harness enforces supported contracts; each agent supplies a versioned binding. A second workflow reuses interfaces but supplies its own tests, action evidence and recovery adapter.
+- The console distinguishes a restriction request from runtime acknowledgment and in-flight reconciliation. An accepted stop click is not proof of enforcement.
+- Training is optional. Investigate source, retrieval, prompt, tool and workflow defects first. Judge verdicts and raw traces are not training truth.
+- Unknown outcomes remain visible and owned. The console snapshot shows OP-42 before reconciliation; the reference decision record shows its later verified outcome.
+- Verified action completion is not whole-case closure. A case needing human approval is not fully autonomous; lower total human effort can still establish value.
+- Preserve the existing navigation cleanup and historical links. The other AI-DLC repository remains separate.
 
-## Remaining work and limits
+## Review and verification record
 
-No editorial or publication blocker remains for this revision. The contracts and evaluation cases are design specifications, not an implemented policy engine or executed tests. No Jev benchmark, model training, financial-services integration or measured savings result was produced. A real pilot still requires domain-labeled evaluation, implemented controls, destination guarantees, staffed recovery and agreed acceptance criteria.
+The architecture rereview checked mode semantics, grant scope, promotion proof, console states, harness bindings and E16–E22. The reader rereview checked the six-minute narrative and all three changed/new figures. Both passed with the boundary that these are proposed designs, not demonstrated operating performance. Audience research uses public primary sources and makes no claim to know an executive's private priorities or likely response.
 
-For the next requested change, read [AGENTS.md](AGENTS.md), [RESEARCH-NOTES.md](RESEARCH-NOTES.md) and [SOURCES.md](SOURCES.md), then inspect the affected published text and actual images. Recheck changing product facts. Do not silently reopen or update the separate AI-DLC paper.
+Before closing publication, validate repository links/anchors, JSON IDs and SVG syntax, compare published blobs with the reviewed local files, and inspect the GitHub-rendered brief and new images. Record the resulting commit here.
+
+## Limits and next work
+
+The example contracts, registration profile and evaluation cases are specifications, not implemented policies or executed tests. No financial-services integration, Jev benchmark, model training or measured savings was produced. A pilot requires domain-labeled evaluation, implemented controls, destination guarantees, staffed recovery and agreed acceptance criteria. Do not turn these limits into invented evidence.
+
+For the next requested change, read [AGENTS.md](AGENTS.md), [RESEARCH-NOTES.md](RESEARCH-NOTES.md) and [SOURCES.md](SOURCES.md), then inspect the affected text and actual images. Recheck changing product facts. An earlier review does not certify later edits.

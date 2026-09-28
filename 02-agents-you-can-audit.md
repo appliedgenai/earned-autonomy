@@ -1,10 +1,10 @@
 # Earned Autonomy: an operating model for agents that act
 
-### Bounded investigation, verified execution and evidence-based changes in authority
+### A shared harness, four autonomy modes and an operating console for evidence-based delegation
 
 *Mohit Mittal · September 2026*
 
-**Use an agent where adaptive investigation improves resolution. Grant specific permissions, verify the consequences, and keep those permissions revocable.** Evaluation should improve the system and inform authority decisions through separate processes. The agent cannot promote itself, and a model upgrade does not remove a required approval.
+**Treat each action's authority as a versioned, revocable operating decision, separate from the agent or model release.** A shared harness enforces that authority; an agentic console connects observed outcomes to accountable decisions to retain, expand, restrict or suspend it. The business objective is more correctly resolved work with less total human effort.
 
 [Six-minute visual brief](README.md) · [Detailed reference design](reference-design.md)
 
@@ -20,7 +20,7 @@ Compliance is a constraint and an operating responsibility, not the sole reason 
 
 ## Authority is a contract for an action
 
-[![Action-specific authority for the same service case, including promotion and restriction of internal case creation](diagrams/p2-autonomy-per-action.png)](diagrams/p2-autonomy-per-action.png)
+[![Four action-scoped autonomy modes, with distinct promotion evidence and a separate suspension control](diagrams/p2-autonomy-per-action.png)](diagrams/p2-autonomy-per-action.png)
 
 Treat an authority grant as a versioned record: **action, actor/delegation, scope, eligible cohort, environment, allowed mode, mandatory approvals, limits, expiry, validated system/configuration versions and accountable owner**. The registered capability describes what the agent can attempt; the grant describes what it may perform. Current policy and destination authorization can further restrict it.
 
@@ -29,6 +29,65 @@ For SC-42, permitted source access and draft preparation have bounded scopes. `c
 Expansion is multidimensional. A grant may cover more case types, a larger volume, a different environment or fewer discretionary reviews. Evaluate each change explicitly. Removing a discretionary review does not remove an approval mandated by applicable policy. “Read-only” still requires access controls and data-handling limits.
 
 The user interface should state which action will happen, under whose authority, and which parts remain proposals. A broad instruction to investigate a case is not an instruction to send a client message, close an unresolved case or modify an account.
+
+## One action through the four modes
+
+These modes describe **an action for a defined cohort under a particular grant**. A console may summarize an agent's activity, but one global agent level would conceal mixed permissions. The progression is optional; entering a mode requires its evidence, not time spent on a ladder.
+
+| Mode | What the system may do | Evidence needed before entering |
+|---|---|---|
+| **A0 · Shadow** | Investigate authorized data and record simulated proposals; no business writes or operational instructions for others to execute. | Approved access/data handling, scoped tools, evaluation capture and an owner. |
+| **A1 · Propose** | Present an actionable draft for human use; the agent's execution path remains disabled. | Representative evidence that the draft is useful, grounded and routes ambiguity appropriately. |
+| **A2 · Approved execution** | Dispatch the exact approved proposal after fresh checks. | Tested action contract, approval binding, destination authorization, duplicate/concurrency controls, reconciliation and staffed exceptions. |
+| **A3 · Bounded execution** | Execute eligible actions without per-instance discretionary review, within the owner's grant. | Same-action/cohort outcome evidence, applicable judge calibration, tested restriction/recovery, operational capacity and net benefit; policy must permit delegation. |
+
+A0/A1 results can support judgment quality; they cannot establish the safety of actual writes. A1 may still allow a human to perform work through a separate authorized system; it does not create permission for the agent's executor. Mandatory per-action approval prevents A3 for that action. Suspension is a separate dispatch-control state and can apply regardless of the previous mode.
+
+### A hypothetical grant review for SC-42
+
+Consider `create_internal_case`, which creates a linked specialist follow-up. Keep the cohort fixed: eligible servicing cases with verified account/parent linkage and an approved follow-up type and destination queue. This is a worked decision design; the observations below are hypothetical, not reported pilot results.
+
+| Review point | Evidence and decision | What the runtime permits |
+|---|---|---|
+| Qualify the draft | A0 results support useful, grounded proposals and appropriate escalation. Approve A1; no business execution evidence is implied. | Show the proposal; agent dispatch stays disabled. |
+| Enable supervised execution | Isolated integration tests and drills establish exact approval, fresh policy checks, correct effects, duplicate prevention and owned recovery. Approve A2 for a limited supervised cohort. | Create the exact follow-up after approval and current checks. |
+| Reject a premature promotion | API checks pass, but reviewers find unnecessary follow-ups or incorrect routing. Retain A2; correct context/routing and add regressions. | Improved model or judge scores do not change the grant. |
+| Delegate a narrow action | Independently reviewed outcomes meet criteria agreed in advance; queue capacity and total effort justify delegation. The action owner approves grant revision CF-42@v2. | A3 only for the eligible cohort, approved queues/fields and volume limits, until expiry; the address action stays A2. |
+| Contain and restore | A confirmed effect on an out-of-scope parent case triggers the predefined severe-event rule. Block affected new dispatches and reconcile in-flight work. After repair, relevant tests, observation and owner review, restoration may begin at A2. | Suspension is enforced outside the model. Restoring A2 does not silently restore A3 or erase the incident. |
+
+The review packet binds the grant request to an evaluation window and matured cohort, actual system/tool/model/rubric versions, sample selection, severity-specific error counts, unresolved operations, reviewer effort and downstream rework. Fix minimum evidence, acceptance limits, queue capacity and restriction/restoration rules before examining results. This paper supplies no universal numeric promotion threshold.
+
+The A3 grant limits the parent/account relationship, follow-up type, permitted fields, destination queue and volume. An existing follow-up for the same parent and type is reconciled or escalated rather than recreated; duplicate prevention must be enforced by the destination's supported operation/uniqueness contract. Creating a correctly routed case is action success. Resolving the original servicing problem remains a separate outcome.
+
+[Illustrative authority review record](examples/authority-review.json)
+
+## Bind every agent to a supported harness
+
+A shared harness supplies a repeatable operating boundary. Each registered agent receives a **versioned configuration**, rather than a separate copy of the platform. The configuration binds identity/delegation, allowed context and tools, budgets, grant references, required evaluations, evidence and exception routing.
+
+[![Each registered agent binds to a shared enforced runtime, with evidence, evaluation and accountable console decisions outside the model](diagrams/p2-agent-harness.png)](diagrams/p2-agent-harness.png)
+
+For the servicing investigator, registration links an accountable owner and validated runtime configuration to source-access rules, read tools and the two action contracts. Tool availability does not imply permission to execute. The harness resolves current grants at dispatch; a cached startup decision cannot establish that permission is still valid.
+
+An approved implementation must demonstrate request identity propagation, scoped tool/credential access, required-check failure behavior, durable operation identity, cancellation/reconciliation, and export of usable evidence. An external agent or provider that cannot support a required boundary stays outside that execution mode. A wrapper or a prompt cannot manufacture missing enforcement guarantees.
+
+Shared platform services provide identity integration, grant evaluation, durable execution, evidence correlation and evaluation plumbing. Domain teams own eligible cohorts, meaning of correct completion, escalation labels and recovery. The second workflow supplies its own action contract, tests and recovery adapter while reusing those services.
+
+[Illustrative per-agent registration profile](examples/agent-profile.json)
+
+## Use an agentic console to operate those decisions
+
+The console combines **agent inventory, action-level authority, observed outcomes and accountable change requests**. It is an operational interface to the underlying controls; runtime and destination services enforce the decision.
+
+[![Reference console separates requested promotion, current grants, restriction acknowledgments and unresolved operations](diagrams/p2-agentic-console.png)](diagrams/p2-agentic-console.png)
+
+This synthetic snapshot shows OP-42 after a timeout, before reconciliation. The reference design's later decision record shows its verified outcome; the console must preserve the unknown state until that evidence arrives.
+
+For each action/cohort, show the effective grant and configuration, owner, policy ceiling, evaluation window, sample coverage, material errors, human effort and exception backlog. Expose missing evidence instead of displaying an unexplained green trust score. Operators should be able to move from a metric to the reviewed cases and operation records that produced it.
+
+A promotion request records the proposed change, evidence and approvers. Restriction records have separate **requested**, **enforcement confirmed**, and **in-flight reconciled** states. Measure the delay between them. The console must not display “suspended” merely because it accepted a button click; an unacknowledged request needs a defined operational escalation.
+
+Business owners authorize grant expansion with applicable risk partners. Operations may restrict within preauthorized incident procedures. Restoration has its own approval path. These changes use authenticated, authorized and audited control APIs; the evaluating model cannot write the grant store or approve its own recommendations.
 
 ## Separate model judgment from the execution boundary
 
