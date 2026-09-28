@@ -66,6 +66,8 @@ That connects the two halves of the architecture: a delivery model that makes de
 
 ## Optional detail
 
+[AI-DLC: From Intent to Evidence](03-intent-driven-ai-dlc.md) — a companion on people, process, technology, build versus buy, patterns and metrics.
+
 [Agents you can audit](02-agents-you-can-audit.md) · [Operating model wins, not tooling](01-operating-model-wins.md) · [Reference design and failure cases](reference-design.md)
 
 **About me:** I'm Mohit Mittal, a Chief Architect with 22+ years in enterprise architecture and distributed systems. My experience includes governed agent infrastructure and MCP servers in healthcare, and production LLM/RAG systems at Chegg. My focus is translating architecture into enforceable behavior and measurable business outcomes.

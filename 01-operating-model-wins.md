@@ -6,6 +6,8 @@
 
 **Short on time? [Read the six-minute visual brief](README.md).**
 
+**For the complete delivery ecosystem:** [AI-DLC: From Intent to Evidence](03-intent-driven-ai-dlc.md) and its [implementation playbook](ai-dlc-implementation-playbook.md).
+
 If a coding agent halves implementation time but doubles the review queue, the organization may ship no sooner. If an advisor agent saves four minutes of entry and creates six minutes of exception handling, the business has lost capacity.
 
 Both failures come from optimizing a step while ignoring the system around it.
