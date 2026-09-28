@@ -10,7 +10,7 @@ The current revision uses four action-scoped modes, a shared harness, an agentic
 
 ## Current revision
 
-Editorial and architecture review completed; publication verification is pending. The prior published baseline is [7b78189](https://github.com/appliedgenai/earned-autonomy/commit/7b781896e9f5cafe236953b2e43028b717f4736b).
+Published and verified in [15d4f13](https://github.com/appliedgenai/earned-autonomy/commit/15d4f13f239d11c868749b35f5080f942f7f675c). All seventeen changed/new file blobs match the reviewed local files exactly. The GitHub-rendered brief and full-paper sections were inspected; both brief images and all five full-paper images loaded successfully. The prior published baseline is [7b78189](https://github.com/appliedgenai/earned-autonomy/commit/7b781896e9f5cafe236953b2e43028b717f4736b).
 
 - Rebuilt the executive story around net advisor/operations effort and one concrete permission decision.
 - Added four modes for a specific action/cohort: shadow, propose, approved execution and bounded execution. Suspension is a separate control state.
@@ -40,7 +40,7 @@ Editorial and architecture review completed; publication verification is pending
 
 The architecture rereview checked mode semantics, grant scope, promotion proof, console states, harness bindings and E16–E22. The reader rereview checked the six-minute narrative and all three changed/new figures. Both passed with the boundary that these are proposed designs, not demonstrated operating performance. Audience research uses public primary sources and makes no claim to know an executive's private priorities or likely response.
 
-Before closing publication, validate repository links/anchors, JSON IDs and SVG syntax, compare published blobs with the reviewed local files, and inspect the GitHub-rendered brief and new images. Record the resulting commit here.
+Validation passed: sixty relative links/anchors, four JSON files, twenty-two unique evaluation scenario IDs, and nine retained SVG sources. The executive brief is 941 whitespace-separated words, with two figures. These checks validate document integrity; the scenarios remain unexecuted specifications. No editorial or publication blocker remains for this revision.
 
 ## Limits and next work
 
