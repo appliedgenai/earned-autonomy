@@ -36,7 +36,7 @@ The **shared harness** is the control software between an agent and its business
 
 Verification establishes the client's intended address; a reviewer approves the exact change. Before sending it, the shared harness rechecks the payload, rights, grant and preconditions. AI evaluators assess evidence; they cannot grant authority. The address operation **OP-42** times out. Reconcile its outcome before deciding whether to retry.
 
-[![Proposal, fresh checks, execution and verification](diagrams/p2-model-proposes-policy-decides.png)](diagrams/p2-model-proposes-policy-decides.png)
+[![Proposal, fresh checks, execution and verification](diagrams/p2-model-proposes-policy-decides.svg)](diagrams/p2-model-proposes-policy-decides.svg)
 
 <a id="operator-console"></a>
 
@@ -104,4 +104,4 @@ The operations sponsor owns results; the platform lead owns execution and recove
 
 **Mohit Mittal · Chief Architect · 22+ years.** Experience includes production LLM/RAG at Chegg and governed agent infrastructure and MCP servers in healthcare.
 
-[AI-native delivery architecture](https://github.com/appliedgenai/intent-to-production) · [CC BY 4.0](LICENSE.md)
+[Agentic Enterprise Blueprint](https://github.com/appliedgenai/agentic-enterprise-blueprint) · [AI-native delivery architecture](https://github.com/appliedgenai/intent-to-production) · [Data products for agents](https://github.com/appliedgenai/agent-data-products) · [CC BY 4.0](LICENSE.md)
